@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIM-GATHA: Divine Calendar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'], serif: ['Cinzel', 'serif'] },
+                    colors: { charcoal: { 900: '#0a0a0b', 800: '#121214' }, amber: { 400: '#fbbf24', 500: '#f59e0b' } }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0a0b;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        .glass {
+            background: rgba(26, 26, 30, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #fbbf24, #d97706);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .event-card {
+            background: linear-gradient(145deg, rgba(30, 30, 36, 0.8) 0%, rgba(18, 18, 20, 0.9) 100%);
+            border-left: 4px solid #f59e0b;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <nav class="fixed w-full z-50 glass border-b-0 border-white/5">
+        <div class="max-w-7xl mx-auto px-4 lg:px-8 h-20 flex items-center justify-between gap-6">
+            <div class="flex items-center space-x-4 cursor-pointer" onclick="window.location.href='index.html'">
+                <span class="text-4xl text-amber-500 filter drop-shadow-lg">🔱</span>
+                <div class="hidden sm:flex flex-col">
+                    <span class="font-bold text-xl tracking-[0.2em] uppercase serif text-white">HIM-<span
+                            class="text-amber-500">GATHA</span></span>
+                    <span class="text-[10px] tracking-[0.3em] text-amber-500/70 uppercase font-light">Divine
+                        Calendar</span>
+                </div>
+            </div>
+            <div class="flex items-center space-x-6">
+                <div class="hidden lg:flex space-x-6 text-[11px] font-semibold uppercase tracking-widest">
+                    <a href="index.html" class="text-white/60 hover:text-amber-400">Directory</a>
+                    <a href="family.html" class="text-white/60 hover:text-amber-400">Lineages</a>
+                    <a href="events.html" class="text-amber-400">Events</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-4 pt-32 pb-24 space-y-12">
+        <div class="text-center">
+            <h1 class="text-5xl font-bold serif mb-6"><span class="text-gradient">Upcoming</span> Events</h1>
+            <p class="text-white/60 max-w-2xl mx-auto">Track the divine calendar, festivals, and processions for the
+                deities across Devbhoomi.</p>
+        </div>
+
+        <div class="space-y-6">
+            <!-- SSR_EVENTS_START -->
+            <!-- SSR_EVENTS_END -->
+        </div>
+    </main>
+
+</body>
+
+</html>

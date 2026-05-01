@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIM-GATHA: Divine Lineages</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Cinzel', 'serif'],
+                    },
+                    colors: {
+                        charcoal: { 900: '#0a0a0b', 800: '#121214', 700: '#1a1a1e' },
+                        amber: { 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0a0a0b; color: #e2e8f0; overflow-x: hidden; }
+        .glass { background: rgba(26, 26, 30, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .text-gradient { background: linear-gradient(to right, #fbbf24, #d97706); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .node-card { background: linear-gradient(145deg, rgba(30, 30, 36, 0.8) 0%, rgba(18, 18, 20, 0.9) 100%); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .edge-link { border-left: 2px dashed rgba(245, 158, 11, 0.3); padding-left: 1rem; margin-left: 1rem; margin-top: 0.5rem; }
+    </style>
+</head>
+<body class="antialiased selection:bg-amber-500/30 selection:text-amber-200">
+
+    <nav class="fixed w-full z-50 glass border-b-0 border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 lg:px-8 h-20 flex items-center justify-between gap-6">
+            <div class="flex items-center space-x-4 cursor-pointer" onclick="window.location.href='index.html'">
+                <span class="text-4xl text-amber-500 filter drop-shadow-lg">🔱</span>
+                <div class="hidden sm:flex flex-col">
+                    <span class="font-bold text-xl tracking-[0.2em] uppercase serif text-white">HIM-<span class="text-amber-500">GATHA</span></span>
+                    <span class="text-[10px] tracking-[0.3em] text-amber-500/70 uppercase font-light">Divine Lineages</span>
+                </div>
+            </div>
+            <div class="flex items-center space-x-6">
+                <div class="hidden lg:flex space-x-6 text-[11px] font-semibold uppercase tracking-widest">
+                    <a href="index.html" class="text-white/60 hover:text-amber-400 transition-colors">Directory</a>
+                    <a href="family.html" class="text-amber-400 transition-colors">Lineages</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-4 pt-32 pb-24 space-y-16">
+        <div class="text-center">
+            <h1 class="text-5xl font-bold serif mb-6"><span class="text-gradient">Genealogical</span> Multigraph</h1>
+            <p class="text-white/60 max-w-2xl mx-auto leading-relaxed">Generated using a C Language Adjacency List. This maps the complex network of brotherhoods, rivalries, and divine parentage in the Devbhoomi pantheon.</p>
+        </div>
+
+        <div class="space-y-8">
+            <!-- SSR_GRAPH_START -->
+            <!-- SSR_GRAPH_END -->
+        </div>
+    </main>
+
+</body>
+</html>
