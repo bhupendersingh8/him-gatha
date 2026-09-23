@@ -1,0 +1,35 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return signedIn() && request.auth.token.role == "admin";
+    }
+
+    function isValidImage() {
+      return request.resource.size <= 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/(jpeg|png|webp|jpg)');
+    }
+
+    // Community submissions folder
+    match /submissions/{fileName} {
+      // Publicly readable for cultural archive records
+      allow read: if true;
+
+      // Allow public creation with strict constraints, prevent overwrites
+      allow create: if isValidImage() && resource == null;
+
+      // Only administrators can modify or remove submitted images
+      allow update, delete: if isAdmin();
+    }
+
+    // Deny all other storage access by default
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

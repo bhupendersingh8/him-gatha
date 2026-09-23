@@ -1,0 +1,92 @@
+[
+  {
+    "deityId": "KA-004",
+    "title": "Baisakhi Mela Baijnath",
+    "date": "2027-04-13",
+    "description": "The spring festival at the ancient Baijnath temple dedicated to Lord Shiva (Vaidyanath) in Kangra. One of the twelve Jyotirlinga-style temples. The festival marks the beginning of the harvest season. Traditional Kangra folk songs and Pahadi Nati performances accompany the rituals.",
+    "location": "Baijnath, Kangra",
+    "map": "https://www.google.com/maps/search/?api=1&query=Baijnath+Temple+Kangra+Himachal+Pradesh",
+    "createdAt": "2026-06-09T19:44:29.525Z"
+  },
+  {
+    "deityId": "SI-004",
+    "title": "Bhangayani Devi Fair",
+    "date": "2027-05-20",
+    "description": "The grand annual fair held at the Haripur Dhar mountaintop temple in Sirmour. Bhangayani Mata, the divine sister of Shirgul Maharaj, descends from Churdhar to bless devotees. This is one of the most attended fairs in Sirmour. Large palanquin (Rath) processions from many villages converge at the summit.",
+    "location": "Haripur Dhar, Sirmour",
+    "map": "https://www.google.com/maps/search/?api=1&query=Bhangayani+Devi+Temple+Haripur+Dhar+Sirmour+Himachal+Pradesh",
+    "createdAt": "2026-06-09T19:44:29.525Z"
+  },
+  {
+    "deityId": "MA-004",
+    "title": "Prashar Rishi Mela",
+    "date": "2027-06-10",
+    "description": "Annual pilgrimage fair at the legendary Prashar Lake. Devotees hike to the 2,730-meter high lake where the pagoda-style temple of Sage Prashar stands. The mysterious floating island in the lake is believed to move according to divine will. Offerings of rice and flowers are floated on the lake. Local folklore performances (Nati dance) are held at night.",
+    "location": "Prashar Lake, Mandi",
+    "map": "https://www.google.com/maps/search/?api=1&query=Prashar+Lake+Mandi+Himachal+Pradesh",
+    "createdAt": "2026-06-09T19:44:29.525Z"
+  },
+  {
+    "deityId": "UN-001",
+    "title": "Chintpurni Fair (Shravan Navratri)",
+    "date": "2026-08-15",
+    "description": "The grand Shravan Navratri fair at Shri Chintpurni Devi temple — one of the 51 Shakti Peethas. One of the most powerful goddess shrines in North India. During both Navratris (March and October), hundreds of thousands of devotees arrive from across Punjab, Haryana, and Himachal.",
+    "location": "Chintpurni, Una",
+    "map": "https://www.google.com/maps/search/?api=1&query=Chintpurni+Temple+Una+Himachal+Pradesh",
+    "createdAt": "2026-06-09T19:44:29.525Z"
+  },
+  {
+    "deityId": "SH-007",
+    "title": "Ghunda Naag Festival (Nag Panchami)",
+    "date": "2026-08-14",
+    "description": "The local harvest protection ceremony dedicated to Ghunda Naag (Dome Devta), brother of Mahasu. Celebrated on the auspicious occasion of Nag Panchami. Serpent deity worship is central. Devotees bring offerings of milk, rice, and flowers. The ceremony is held at the village square (Chabutra) in Kotkhai.",
+    "location": "Kotkhai, Shimla",
+    "map": "https://www.google.com/maps/search/?api=1&query=Kotkhai+Shimla+Himachal+Pradesh",
+    "createdAt": "2026-06-09T19:44:29.525Z"
+  },
+  {
+    "deityId": "CH-003",
+    "title": "Manimahesh Yatra",
+    "date": "2026-08-26",
+    "description": "The sacred annual pilgrimage to the Manimahesh Lake at 4,080 meters altitude in Chamba. Lord Shiva is believed to reside on the Manimahesh Kailash peak. Hundreds of thousands of pilgrims undertake the arduous trek from Hadsar (base camp). A ritual bath in the sacred lake on Radha Ashtami is the culminating event.",
+    "location": "Bharmour, Chamba",
+    "map": "https://www.google.com/maps/search/?api=1&query=Manimahesh+Lake+Chamba+Himachal+Pradesh",
+    "createdAt": "2026-06-09T19:44:29.525Z"
+  },
+  {
+    "deityId": "SH-005",
+    "title": "Mahasu Devta Jagra",
+    "date": "2026-09-15",
+    "description": "The annual grand all-night vigil (Jagra) held at the sacred Hanol temple. Thousands gather for devotional singing, rituals, and the spectacular torch-lit procession. The four Mahasu brothers — Botha, Pabasi, Vasik, and Chalda — are collectively invoked during this ceremony. Devotees from across Shimla, Uttarkashi, and Dehradun attend in massive numbers.",
+    "location": "Hanol, Shimla District",
+    "map": "https://www.google.com/maps/search/?api=1&query=Mahasu+Devta+Temple+Hanol+Himachal+Pradesh",
+    "createdAt": "2026-06-09T19:44:29.525Z"
+  },
+  {
+    "deityId": "KU-001",
+    "title": "Kullu Dussehra Rath Yatra",
+    "date": "2026-10-22",
+    "description": "The internationally renowned Kullu Dussehra, declared a Festival of National Importance by the Govt. of India. Lord Raghunath's grand chariot procession leads hundreds of deities in a spectacular seven-day fair in the Dhalpur Maidan. Deities from across the Kullu valley pay homage to the 'King of Gods' — Lord Raghunathji. The event culminates in the burning of Lanka (symbolic of evil).",
+    "location": "Dhalpur Maidan, Kullu",
+    "map": "https://www.google.com/maps/search/?api=1&query=Dhalpur+Maidan+Kullu+Himachal+Pradesh",
+    "createdAt": "2026-06-09T19:44:29.525Z"
+  },
+  {
+    "deityId": "SH-001",
+    "title": "Bhimakali Temple Fair (Navratri)",
+    "date": "2026-10-25",
+    "description": "The grand autumn Navratri festival at the multi-storied wooden palace-temple of Bhimakali Mata in Sarahan. The Bushahr royal family presides over the ceremonies. The temple is a stunning example of Himachali wooden architecture. Devotees offer gold, silver, and precious gems to the goddess. The fair runs for three days with traditional music and Nati dance performances.",
+    "location": "Sarahan, Shimla",
+    "map": "https://www.google.com/maps/search/?api=1&query=Bhimakali+Temple+Sarahan+Himachal+Pradesh",
+    "createdAt": "2026-06-09T19:44:29.525Z"
+  },
+  {
+    "deityId": "MA-003",
+    "title": "Kamrunag Shivratri Descent (Mandi Shivratri)",
+    "date": "2027-02-26",
+    "description": "Kamrunag, the ancient rain deity of the Mandi region, makes his ceremonial annual descent to Mandi city for the world-famous International Mandi Shivratri Fair. Over 200 deities gather in one place. The procession of the ornate silver palanquin of Kamrunag is one of the most iconic sights of the Shivratri fair. His sacred lake near Rohanda is believed to hold centuries of gold offerings from devotees.",
+    "location": "Mandi Town",
+    "map": "https://www.google.com/maps/search/?api=1&query=Mandi+Shivratri+Fair+Mandi+Himachal+Pradesh",
+    "createdAt": "2026-06-09T19:44:29.525Z"
+  }
+]

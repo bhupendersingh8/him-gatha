@@ -1,0 +1,57 @@
+[
+  {
+    "deityId1": "SH-005",
+    "deityId2": "SH-006",
+    "relationType": "Brother"
+  },
+  {
+    "deityId1": "SH-005",
+    "deityId2": "SH-007",
+    "relationType": "Brother"
+  },
+  {
+    "deityId1": "SH-005",
+    "deityId2": "SH-008",
+    "relationType": "Brother"
+  },
+  {
+    "deityId1": "SH-002",
+    "deityId2": "SI-004",
+    "relationType": "Brother-Sister"
+  },
+  {
+    "deityId1": "MA-003",
+    "deityId2": "MA-008",
+    "relationType": "Father-Son"
+  },
+  {
+    "deityId1": "SH-011",
+    "deityId2": "SH-008",
+    "relationType": "Brother"
+  },
+  {
+    "deityId1": "KU-001",
+    "deityId2": "KU-004",
+    "relationType": "Rival"
+  },
+  {
+    "deityId1": "KU-002",
+    "deityId2": "KU-006",
+    "relationType": "Ally"
+  },
+  {
+    "deityId1": "CH-003",
+    "deityId2": "KA-004",
+    "relationType": "Shaivite Lineage"
+  },
+  {
+    "deityId1": "BL-001",
+    "deityId2": "UN-001",
+    "relationType": "Shakti Peetha"
+  },
+  {
+    "deityId1": "SI-002",
+    "deityId2": "SI-003",
+    "relationType": "Mother-Son"
+  }
+]

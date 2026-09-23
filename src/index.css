@@ -1,0 +1,404 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Inter', sans-serif;
+
+  /* Himalayan Archival HSL-based and semantic palette */
+  --color-crimson-50: #fdf2f2;
+  --color-crimson-100: #fde8e8;
+  --color-crimson-200: #fbd5d5;
+  --color-crimson-500: #b91c1c;
+  --color-crimson-600: #991b1b;
+  --color-crimson-700: #7f1d1d;
+  --color-crimson-800: #6b1d1d;
+  --color-crimson-900: #4c1d15;
+
+  --color-gold-50: #fffbeb;
+  --color-gold-100: #fef3c7;
+  --color-gold-200: #fde68a;
+  --color-gold-500: #f59e0b;
+  --color-gold-600: #d97706;
+  --color-gold-700: #b45309;
+
+  --color-sandstone: #f8f5f0;
+  --color-birch: #f1ede4;
+  --color-charcoal: #1c1917;
+  --color-charcoal-light: #292524;
+  --color-charcoal-card: #ffffff;
+  --color-cream: #faf7f2;
+  --color-cream-card: #fdfbf7;
+
+  /* Archival gentle transitions & animations */
+  --animate-fade-in-up: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-fade-in: fadeIn 0.3s ease-out forwards;
+  --animate-slide-in-right: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+:root {
+  /* ── Himalayan Cultural Archive Light-First Theme ── */
+  --bg-primary: #F8F5F0;           /* Warm Sandstone Cream */
+  --bg-secondary: #F1EDE4;         /* Birch Bark / Aged Parchment */
+  --bg-card: #FFFFFF;              /* Clean warm card surface */
+  --text-primary: #1C1917;         /* Deep Stone Ink - WCAG AAA contrast */
+  --text-secondary: #57534E;       /* Pahari Slate - WCAG AA contrast > 4.5:1 */
+  --text-muted: #78716C;           /* Warm Stone Muted */
+  --border-color: rgba(60, 45, 30, 0.12); /* Subtle warm border */
+  --accent-color: #8E2800;         /* Temple Crimson / Vermillion - primary action */
+  --accent-gold: #C59B27;          /* Sacred Brass Gold - secondary cultural accent */
+  --accent-crimson: #8E2800;       /* Temple Crimson */
+  --glass-bg: rgba(248, 245, 240, 0.85);
+  --glass-border: rgba(60, 45, 30, 0.10);
+  --shadow-premium: 0 4px 20px -4px rgba(60, 45, 30, 0.08), 0 1px 3px rgba(60, 45, 30, 0.04);
+  --map-boundary-stroke: rgba(142, 40, 0, 0.35);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+}
+
+.light-mode {
+  --bg-primary: #F8F5F0;
+  --bg-secondary: #F1EDE4;
+  --bg-card: #FFFFFF;
+  --text-primary: #1C1917;
+  --text-secondary: #57534E;
+  --text-muted: #78716C;
+  --border-color: rgba(60, 45, 30, 0.12);
+  --accent-color: #8E2800;
+  --accent-gold: #C59B27;
+  --accent-crimson: #8E2800;
+  --glass-bg: rgba(248, 245, 240, 0.85);
+  --glass-border: rgba(60, 45, 30, 0.10);
+  --shadow-premium: 0 4px 20px -4px rgba(60, 45, 30, 0.08), 0 1px 3px rgba(60, 45, 30, 0.04);
+  --map-boundary-stroke: rgba(142, 40, 0, 0.35);
+}
+
+.dark-mode {
+  /* Slate Obsidian Theme — Retained for fallback */
+  --bg-primary: #0E0D0B;
+  --bg-secondary: #181613;
+  --bg-card: #221E19;
+  --text-primary: #F5F2EC;
+  --text-secondary: #A8A29E;
+  --text-muted: #78716C;
+  --border-color: rgba(197, 155, 39, 0.18);
+  --accent-color: #C59B27;
+  --accent-gold: #C59B27;
+  --accent-crimson: #8E2800;
+  --glass-bg: rgba(14, 13, 11, 0.85);
+  --glass-border: rgba(197, 155, 39, 0.15);
+  --shadow-premium: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
+  --map-boundary-stroke: rgba(197, 155, 39, 0.35);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  transition: background-color 0.25s ease, color 0.25s ease;
+  overflow-x: hidden;
+  letter-spacing: -0.01em;
+}
+
+/* Archival Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(142, 40, 0, 0.18);
+  border-radius: 99px;
+  transition: background-color 0.2s;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}
+
+/* Subtle Editorial Panels */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-premium);
+}
+
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-premium);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(142, 40, 0, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -4px rgba(60, 45, 30, 0.10), 0 2px 6px rgba(60, 45, 30, 0.05);
+}
+
+/* Tactile Elevation Card (Calm Editorial Lift) */
+.vengeance-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+  will-change: transform, box-shadow;
+}
+
+.vengeance-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(142, 40, 0, 0.25);
+  box-shadow: 0 8px 20px -4px rgba(60, 45, 30, 0.10), 0 2px 6px rgba(60, 45, 30, 0.04);
+}
+
+/* Interactive Pill Component */
+.skiper-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.875rem;
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  cursor: pointer;
+  user-select: none;
+}
+
+.skiper-pill:hover, .skiper-pill.active {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+  background: rgba(142, 40, 0, 0.05);
+  transform: translateY(-1px);
+}
+
+/* Editorial Serif Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  letter-spacing: -0.01em;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Restrained Sacred Map Pulse */
+.map-pulse {
+  position: relative;
+}
+
+.map-pulse::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  animation: pulse-ring 2.4s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  border: 2px solid var(--accent-gold);
+  left: 0;
+  top: 0;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.6); opacity: 0.7; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* Restrained Archival Card Border (replaces neon sweep) */
+.glowing-border {
+  position: relative;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+}
+
+/* Background Canvas Layer */
+.fixed-canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
+  pointer-events: none;
+}
+
+/* Clean Archival Inputs */
+.glass-input {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 1px 2px rgba(60, 45, 30, 0.04);
+  color: var(--text-primary);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glass-input:focus {
+  background: #FFFFFF !important;
+  border-color: var(--accent-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(142, 40, 0, 0.12);
+}
+
+/* Clean Editorial Text Accents (Glows neutralized) */
+.text-glow-gold {
+  color: var(--accent-gold);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #8E2800 0%, #C59B27 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.premium-glow-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color) !important;
+  box-shadow: var(--shadow-premium);
+}
+
+.neon-border-gold {
+  border: 1px solid var(--border-color);
+  box-shadow: 0 1px 3px rgba(60, 45, 30, 0.04);
+}
+
+.neon-border-gold:hover {
+  border-color: rgba(197, 155, 39, 0.4);
+}
+
+/* Mela Pass Card */
+.mela-pass-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--accent-color);
+  border-radius: var(--radius-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mela-pass-card:hover {
+  transform: translateX(3px);
+  box-shadow: 0 4px 12px rgba(60, 45, 30, 0.08);
+}
+
+.font-hindi {
+  font-family: var(--font-serif);
+}
+
+.logo-glow-gold {
+  color: var(--text-primary);
+}
+
+/* WCAG 2.2 compliant universal focus visibility */
+:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* Himalayan Vernacular Architecture (Kath-Kuni) Card */
+.kath-kuni-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(145deg, rgba(245, 237, 228, 0.60), rgba(255, 255, 255, 0.95) 44%, rgba(241, 237, 228, 0.80));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), var(--shadow-premium);
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1), border-color 300ms ease;
+}
+
+.kath-kuni-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.12;
+  background: repeating-linear-gradient(
+    135deg,
+    rgba(142, 40, 0, 0.15) 0 1px,
+    transparent 1px 18px
+  );
+  mask-image: linear-gradient(to bottom, black, transparent 70%);
+}
+
+.kath-kuni-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(142, 40, 0, 0.25);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 10px 24px -8px rgba(60, 45, 30, 0.12),
+    0 2px 6px rgba(60, 45, 30, 0.05);
+}
+
+.dark-mode .kath-kuni-card {
+  background: linear-gradient(145deg, rgba(47, 52, 54, 0.34), rgba(21, 18, 14, 0.92) 44%, rgba(40, 28, 14, 0.76));
+  border-color: rgba(197, 155, 39, 0.20);
+  box-shadow: inset 0 1px 0 rgba(245, 240, 231, 0.05), var(--shadow-premium);
+}
+
+.dark-mode .kath-kuni-card:hover {
+  border-color: rgba(197, 155, 39, 0.35);
+  box-shadow: 0 12px 28px -10px rgba(0, 0, 0, 0.7);
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .kath-kuni-card,
+  .kath-kuni-card::before,
+  .kath-kuni-card::after,
+  .vengeance-card,
+  .glass-card,
+  .skiper-pill,
+  .mela-pass-card,
+  .map-pulse::after {
+    transition: none !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}

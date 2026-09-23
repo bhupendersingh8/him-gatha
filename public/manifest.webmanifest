@@ -1,0 +1,17 @@
+{
+  "name": "HIM GATHA — Sacred Cultural Archive",
+  "short_name": "HIM GATHA",
+  "description": "Sacred digital archive mapping the Dev-Sanskriti, deities, and traditions of Himachal Pradesh.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF6F0",
+  "theme_color": "#8E2800",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

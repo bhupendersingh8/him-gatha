@@ -1,0 +1,101 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return signedIn() && request.auth.token.role == "admin";
+    }
+
+    function isPublished() {
+      return resource.data.publication.status == "published";
+    }
+
+    function validText(value, maxLength) {
+      return value is string
+        && value.size() > 0
+        && value.size() <= maxLength;
+    }
+
+    function validCoordinate(location) {
+      return location is map
+        && location.keys().hasOnly(["lat", "lng"])
+        && (
+          (location.lat == null && location.lng == null) ||
+          (
+            location.lat is number
+            && location.lng is number
+            && location.lat >= 30.2
+            && location.lat <= 33.2
+            && location.lng >= 75.5
+            && location.lng <= 79.0
+          )
+        );
+    }
+
+    function validPendingSubmission() {
+      return request.resource.data.keys().hasOnly([
+          "name",
+          "district",
+          "village",
+          "description",
+          "images",
+          "coordinates",
+          "status",
+          "submittedBy",
+          "submitterEmail",
+          "createdAt",
+          "reviewedBy",
+          "reviewedAt",
+          "rejectionReason"
+        ])
+        && validText(request.resource.data.name, 160)
+        && validText(request.resource.data.district, 80)
+        && validText(request.resource.data.village, 100)
+        && validText(request.resource.data.description, 5000)
+        && request.resource.data.images is list
+        && request.resource.data.images.size() <= 5
+        && validCoordinate(request.resource.data.coordinates)
+        && request.resource.data.status == "pending"
+        && request.resource.data.reviewedBy == null
+        && request.resource.data.reviewedAt == null
+        && request.resource.data.rejectionReason == null
+        && request.resource.data.createdAt is string;
+    }
+
+    match /deities/{deityId} {
+      allow get, list: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /oralHistories/{historyId} {
+      allow get, list: if isPublished() || isAdmin();
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /yatras/{yatraId} {
+      allow get, list: if isPublished() || isAdmin();
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /submissions/{submissionId} {
+      allow create: if validPendingSubmission();
+
+      allow get, list: if isAdmin();
+
+      allow update, delete: if isAdmin();
+    }
+
+    match /auditLogs/{logId} {
+      allow get, list: if isAdmin();
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
