@@ -9,7 +9,9 @@ export function useTheme() {
     const root = window.document.documentElement;
     if (theme === 'light') {
       root.classList.add('light-mode');
+      root.classList.remove('dark-mode');
     } else {
+      root.classList.add('dark-mode');
       root.classList.remove('light-mode');
     }
     localStorage.setItem('theme', theme);
