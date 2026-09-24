@@ -71,10 +71,10 @@
   --bg-card: #FFFFFF;              /* Clean warm card surface */
   --text-primary: #1C1917;         /* Deep Stone Ink - WCAG AAA contrast */
   --text-secondary: #57534E;       /* Pahari Slate - WCAG AA contrast > 4.5:1 */
-  --text-muted: #78716C;           /* Warm Stone Muted */
+  --text-muted: #57534E;           /* Stone 600 - WCAG AA contrast > 4.5:1 on light backgrounds */
   --border-color: rgba(60, 45, 30, 0.12); /* Subtle warm border */
   --accent-color: #8E2800;         /* Temple Crimson / Vermillion - primary action */
-  --accent-gold: #C59B27;          /* Sacred Brass Gold - secondary cultural accent */
+  --accent-gold: #855800;          /* Deep Burnished Gold / Ochre - WCAG AA contrast > 4.5:1 on light */
   --accent-crimson: #8E2800;       /* Temple Crimson */
   --glass-bg: rgba(248, 245, 240, 0.85);
   --glass-border: rgba(60, 45, 30, 0.10);
@@ -151,10 +151,10 @@
   --bg-card: #FFFFFF;
   --text-primary: #1C1917;
   --text-secondary: #57534E;
-  --text-muted: #78716C;
+  --text-muted: #57534E;
   --border-color: rgba(60, 45, 30, 0.12);
   --accent-color: #8E2800;
-  --accent-gold: #C59B27;
+  --accent-gold: #855800;
   --accent-crimson: #8E2800;
   --glass-bg: rgba(248, 245, 240, 0.85);
   --glass-border: rgba(60, 45, 30, 0.10);
@@ -168,12 +168,12 @@
   --bg-secondary: #181613;
   --bg-card: #221E19;
   --text-primary: #F5F2EC;
-  --text-secondary: #A8A29E;
-  --text-muted: #78716C;
+  --text-secondary: #D6D3D1;
+  --text-muted: #A8A29E;
   --border-color: rgba(197, 155, 39, 0.18);
-  --accent-color: #C59B27;
-  --accent-gold: #C59B27;
-  --accent-crimson: #8E2800;
+  --accent-color: #E5B842;
+  --accent-gold: #E5B842;
+  --accent-crimson: #C53030;
   --glass-bg: rgba(14, 13, 11, 0.85);
   --glass-border: rgba(197, 155, 39, 0.15);
   --shadow-premium: 0 10px 30px -10px rgba(0, 0, 0, 0.8);

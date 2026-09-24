@@ -31,7 +31,7 @@ export default function Footer() {
             A digital cultural archive dedicated to preserving the living traditions, sacred deities, village oracles (<span className="italic font-serif">Gur</span>), temple custodians (<span className="italic font-serif">Kardar</span>), and vernacular timber architecture of Himachal Pradesh. Core cultural records and event calendars are bundled for resilient offline browsing.
           </p>
 
-          <div className="flex items-center gap-4 text-xs text-[var(--text-muted)] pt-1">
+          <div className="flex items-center gap-4 text-xs text-[var(--text-secondary)] pt-1">
             <span className="inline-flex items-center gap-1.5">
               <BookOpen className="w-3.5 h-3.5 text-[var(--accent-gold)]" aria-hidden="true" />
               <span>222 Deity Records Documented</span>
@@ -116,7 +116,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Copyright & Archival Notice */}
-      <div className="max-w-7xl mx-auto border-t border-[var(--border-color)] mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]">
+      <div className="max-w-7xl mx-auto border-t border-[var(--border-color)] mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-secondary)]">
         <div>
           © {currentYear} HIM GATHA Digital Heritage Archive. Preserving the Dev-Sanskriti of Himachal Pradesh.
         </div>

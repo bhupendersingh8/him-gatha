@@ -137,7 +137,7 @@ export default function HeroSlideshow() {
       </button>
       
       {/* Indicators */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex gap-3" role="tablist" aria-label="Slides">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-1" role="tablist" aria-label="Slide indicators">
         {SLIDES.map((slide, index) => (
           <button
             key={index}
@@ -146,8 +146,14 @@ export default function HeroSlideshow() {
             aria-selected={index === currentSlide}
             aria-label={`Go to slide ${index + 1}: ${slide.title}`}
             onClick={() => setCurrentSlide(index)}
-            className={`h-3 rounded-full transition-all border border-black/30 shadow-sm ${index === currentSlide ? 'bg-[var(--accent-color)] w-8' : 'w-3 bg-white/75 hover:bg-white'}`}
-          />
+            className="w-8 h-8 flex items-center justify-center cursor-pointer transition-transform hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full"
+          >
+            <span
+              className={`h-3 rounded-full transition-all border border-black/30 shadow-sm ${
+                index === currentSlide ? 'bg-[var(--accent-color)] w-7' : 'w-3 bg-white/80 hover:bg-white'
+              }`}
+            />
+          </button>
         ))}
       </div>
     </div>

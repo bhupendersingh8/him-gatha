@@ -74,7 +74,7 @@ export default function Navbar({ theme, toggleTheme, onSearch }) {
             <span className="text-2xl md:text-3xl font-serif font-bold tracking-tight text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors">
               हिम गाथा
             </span>
-            <span className="hidden sm:inline-block text-[10px] uppercase tracking-widest text-[var(--text-muted)] font-sans font-semibold border-l border-[var(--border-color)] pl-2.5 py-0.5">
+            <span className="hidden sm:inline-block text-xs uppercase tracking-wider text-[var(--text-secondary)] font-sans font-semibold border-l border-[var(--border-color)] pl-2.5 py-0.5">
               Archive
             </span>
           </Link>

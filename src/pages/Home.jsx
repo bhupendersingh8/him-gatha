@@ -211,17 +211,17 @@ export default function Home() {
                   loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent"></div>
                 <div className="absolute top-3 left-3 flex gap-2">
-                  <span className="px-2.5 py-1 rounded-md text-[10px] uppercase font-bold tracking-wider bg-black/60 text-white backdrop-blur-sm border border-white/10">
+                  <span className="px-2.5 py-1 rounded-md text-xs uppercase font-bold tracking-wider bg-black/80 text-white backdrop-blur-sm border border-white/20 shadow-sm">
                     {deity.district}
                   </span>
                 </div>
                 <div className="absolute bottom-3 left-3 right-3 text-white">
-                  <p className="text-xs font-mono text-[var(--accent-gold)] flex items-center gap-1 mb-0.5">
+                  <p className="text-xs font-mono text-amber-300 font-medium flex items-center gap-1 mb-0.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.95)]">
                     <MapPin className="w-3 h-3" /> {deity.village}
                   </p>
-                  <h3 className="text-xl font-serif font-bold text-white leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)]">
+                  <h3 className="text-xl font-serif font-bold text-white leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)]">
                     {lang === 'hi' ? deity.name_hi : deity.name}
                   </h3>
                 </div>
@@ -380,7 +380,7 @@ export default function Home() {
                 The spiritual medium chosen by the deity who enters a sacred altered state (*Khel*) to communicate divine commands, resolve disputes, and prophesy seasonal weather.
               </p>
             </div>
-            <div className="mt-4 pt-3 border-t border-[var(--border-color)] text-[10px] text-[var(--text-muted)] font-mono">
+            <div className="mt-4 pt-3 border-t border-[var(--border-color)] text-xs text-[var(--text-secondary)] font-mono font-medium">
               Hereditary Oral Lineage
             </div>
           </div>
@@ -393,12 +393,12 @@ export default function Home() {
               <h3 className="text-lg font-serif font-bold text-[var(--text-primary)] mb-1">
                 Kardar (कारदार)
               </h3>
-              <p className="text-xs text-[var(--accent-gold)] font-medium mb-3">Chief Executive & Trustee</p>
+              <p className="text-xs text-[var(--accent-gold)] font-semibold mb-3">Chief Executive & Trustee</p>
               <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
                 The traditional administrator overseeing temple wealth, land rights, festival logistics, palanquin journeys (*Jatra*), and community welfare assemblies.
               </p>
             </div>
-            <div className="mt-4 pt-3 border-t border-[var(--border-color)] text-[10px] text-[var(--text-muted)] font-mono">
+            <div className="mt-4 pt-3 border-t border-[var(--border-color)] text-xs text-[var(--text-secondary)] font-mono font-medium">
               Administrative Custodian
             </div>
           </div>
@@ -411,12 +411,12 @@ export default function Home() {
               <h3 className="text-lg font-serif font-bold text-[var(--text-primary)] mb-1">
                 Pujari (पुजारी)
               </h3>
-              <p className="text-xs text-[var(--accent-color)] font-medium mb-3">Ritual & Liturgy Custodian</p>
+              <p className="text-xs text-[var(--accent-color)] font-semibold mb-3">Ritual & Liturgy Custodian</p>
               <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
                 Conducts daily *Nitya Puja*, sacred bath (*Snan*), and seasonal offerings using ancient Pahari invocations and traditional Sanskrit mantras preserved over generations.
               </p>
             </div>
-            <div className="mt-4 pt-3 border-t border-[var(--border-color)] text-[10px] text-[var(--text-muted)] font-mono">
+            <div className="mt-4 pt-3 border-t border-[var(--border-color)] text-xs text-[var(--text-secondary)] font-mono font-medium">
               Liturgical Custodian
             </div>
           </div>
@@ -429,12 +429,12 @@ export default function Home() {
               <h3 className="text-lg font-serif font-bold text-[var(--text-primary)] mb-1">
                 Kath-Kuni Architecture
               </h3>
-              <p className="text-xs text-[var(--accent-gold)] font-medium mb-3">Indigenous Engineering</p>
+              <p className="text-xs text-[var(--accent-gold)] font-semibold mb-3">Indigenous Engineering</p>
               <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
                 Ancient interlocking timber and dry schist stone masonry constructed without mortar or iron nails, imparting high earthquake flexibility across Himalayan faultlines.
               </p>
             </div>
-            <div className="mt-4 pt-3 border-t border-[var(--border-color)] text-[10px] text-[var(--text-muted)] font-mono">
+            <div className="mt-4 pt-3 border-t border-[var(--border-color)] text-xs text-[var(--text-secondary)] font-mono font-medium">
               Vernacular Mastercraft
             </div>
           </div>

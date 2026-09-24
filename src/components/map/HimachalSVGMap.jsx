@@ -222,9 +222,13 @@ export default function HimachalSVGMap({ onDistrictSelect, selectedDistrict }) {
         <div className={`relative flex flex-col justify-center items-center rounded-xl bg-[var(--bg-secondary)]/40 border border-[var(--border-color)] p-4 overflow-hidden transition-all duration-500 min-h-[380px] ${zoomedDistrict ? 'w-full lg:w-[60%]' : 'w-full'}`}>
           <svg 
             viewBox={currentViewBox} 
+            role="img"
+            aria-label="Interactive map of Himachal Pradesh 12 cultural districts"
             className="w-full h-full max-h-[500px] select-none transition-all duration-700 ease-in-out"
             xmlns="http://www.w3.org/2000/svg"
           >
+            <title>Interactive Sacred Map of Himachal Pradesh</title>
+            <desc>Vector cartography displaying 12 districts: Bilaspur, Chamba, Hamirpur, Kangra, Kinnaur, Kullu, Lahaul and Spiti, Mandi, Shimla, Sirmaur, Solan, and Una.</desc>
             {/* Base Grid Layer */}
             <g className="transition-opacity duration-500">
               {districts.map((district) => {
@@ -358,9 +362,9 @@ export default function HimachalSVGMap({ onDistrictSelect, selectedDistrict }) {
 
           {/* Active Hover / Info HUD Foot Overlay */}
           {!zoomedDistrict && (
-            <div className="absolute bottom-3 left-3 bg-[var(--bg-card)]/90 border border-[var(--border-color)] rounded-lg px-3 py-1.5 backdrop-blur-sm pointer-events-none shadow-sm">
-              <span className="text-[9px] text-[var(--text-muted)] block uppercase tracking-wider font-mono">Topography HUD</span>
-              <span className="text-xs font-serif text-[var(--accent-color)] font-semibold">
+            <div className="absolute bottom-3 left-3 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-lg px-3 py-2 pointer-events-none shadow-md">
+              <span className="text-xs text-[var(--text-secondary)] block uppercase tracking-wider font-mono font-medium">Topography HUD</span>
+              <span className="text-xs font-serif text-[var(--accent-color)] font-bold">
                 {hoveredDistrict 
                   ? districts.find(d => d.id === hoveredDistrict)?.name 
                   : selectedDistrict && selectedDistrict !== 'All'
@@ -378,11 +382,11 @@ export default function HimachalSVGMap({ onDistrictSelect, selectedDistrict }) {
             
             {/* Tehsil Selector */}
             <div>
-              <span className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider block mb-2 font-mono">Cultural Sub-Regions</span>
+              <span className="text-xs text-[var(--text-secondary)] uppercase tracking-wider block mb-2 font-mono font-medium">Cultural Sub-Regions</span>
               <div className="flex flex-wrap gap-1.5 max-h-32 overflow-y-auto pr-1">
                 <button
                   onClick={() => setSelectedSubRegion('All')}
-                  className={`px-2.5 py-1 rounded-full text-[10px] font-sans border transition-all ${
+                  className={`px-2.5 py-1 rounded-full text-xs font-sans border transition-all ${
                     selectedSubRegion === 'All'
                       ? 'bg-[var(--accent-color)] border-[var(--accent-color)] text-white font-semibold'
                       : 'bg-[var(--bg-primary)] border-[var(--border-color)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--accent-color)]'
