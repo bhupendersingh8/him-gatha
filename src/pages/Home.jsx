@@ -165,10 +165,10 @@ export default function Home() {
             </div>
             <div className="p-3 border-t md:border-t-0 border-l border-[var(--border-color)]">
               <p className="text-3xl md:text-5xl font-serif text-[var(--accent-gold)] font-bold tracking-tight">
-                Centuries
+                500+
               </p>
               <p className="text-xs font-medium tracking-wide text-[var(--text-secondary)] mt-1.5">
-                Living Oral Traditions
+                Years of Living Lore
               </p>
             </div>
           </div>
@@ -247,7 +247,7 @@ export default function Home() {
                     to={`/deity/${deity.slug || deity.id}`}
                     className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--accent-color)] group-hover:text-[var(--accent-crimson)] transition-colors"
                   >
-                    <span>Read Archival Dossier</span>
+                    <span>Read Deity Profile</span>
                     <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                   </Link>
                 </div>
@@ -373,7 +373,7 @@ export default function Home() {
                 <Sparkles className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-serif font-bold text-[var(--text-primary)] mb-1">
-                Gur (गुड़ / Oracle)
+                Gur (गुर / Oracle)
               </h3>
               <p className="text-xs text-[var(--accent-color)] font-medium mb-3">Divine Medium & Seer</p>
               <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
@@ -486,7 +486,7 @@ export default function Home() {
                   disabled={selectedMapDistrict === 'All'}
                   className="inline-flex items-center justify-center px-4 py-3 rounded-lg border border-[var(--border-color)] bg-[var(--bg-card)] text-[var(--text-secondary)] text-sm font-medium hover:text-[var(--text-primary)] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
                 >
-                  Reset Focus
+                  Reset Map
                 </button>
               </div>
             </div>

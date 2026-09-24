@@ -103,7 +103,7 @@ export default function HeroSlideshow() {
                   className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-[var(--accent-color)] text-white rounded-full font-semibold hover:bg-[var(--accent-crimson)] transition-colors shadow-lg text-sm sm:text-base cursor-pointer inline-flex items-center justify-center gap-2"
                 >
                   <Compass className="w-4 h-4 sm:w-5 sm:h-5" />
-                  {slide.targetUrl?.startsWith('/deity') ? 'Explore Deity Dossier' : 'Explore Sacred Atlas'}
+                  {slide.targetUrl?.startsWith('/deity') ? 'Explore Deity Profile' : 'Explore Sacred Atlas'}
                 </button>
                 <button 
                   onClick={() => navigate('/explore')}

@@ -107,7 +107,7 @@ export default function Footer() {
                 className="hover:text-[var(--accent-color)] transition-colors inline-flex items-center gap-1.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-color)] rounded-sm"
               >
                 <Shield className="w-3.5 h-3.5 text-[var(--accent-color)]" aria-hidden="true" />
-                <span>Kardar / Admin Portal</span>
+                <span>Kardar / Custodian Access</span>
               </Link>
             </li>
           </ul>
