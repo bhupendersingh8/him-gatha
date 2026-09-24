@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Compass } from 'lucide-react';
 
 const SLIDES = [
   {
@@ -85,28 +85,29 @@ export default function HeroSlideshow() {
           ></div>
           
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-black/45 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-black/70 to-black/35"></div>
           
           {/* Content */}
           <div className="absolute inset-0 flex items-center justify-center text-center p-4">
             <div className={`max-w-4xl transform transition-all duration-1000 delay-300 ${index === currentSlide ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-              <h1 className="text-3xl sm:text-5xl md:text-7xl font-serif text-white mb-4 sm:mb-6 drop-shadow-lg tracking-wide sm:tracking-wider font-bold">
+              <h2 className="text-3xl sm:text-5xl md:text-7xl font-serif text-white mb-4 sm:mb-6 drop-shadow-lg tracking-wide sm:tracking-wider font-bold">
                 {slide.title}
-              </h1>
-              <p className="text-base sm:text-lg md:text-2xl text-slate-200 font-sans font-light max-w-2xl mx-auto drop-shadow-md">
+              </h2>
+              <p className="text-base sm:text-lg md:text-xl text-white font-medium max-w-2xl mx-auto drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
                 {slide.subtitle}
               </p>
               
               <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full">
                 <button 
                   onClick={() => navigate(slide.targetUrl || '/explore')}
-                  className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-[var(--accent-color)] text-white rounded-full font-semibold hover:bg-[var(--accent-crimson)] transition-colors shadow-lg text-sm sm:text-base cursor-pointer"
+                  className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-[var(--accent-color)] text-white rounded-full font-semibold hover:bg-[var(--accent-crimson)] transition-colors shadow-lg text-sm sm:text-base cursor-pointer inline-flex items-center justify-center gap-2"
                 >
+                  <Compass className="w-4 h-4 sm:w-5 sm:h-5" />
                   {slide.targetUrl?.startsWith('/deity') ? 'Explore Deity Dossier' : 'Explore Sacred Atlas'}
                 </button>
                 <button 
                   onClick={() => navigate('/explore')}
-                  className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-white/20 backdrop-blur-md border border-white/40 text-white rounded-full font-semibold hover:bg-white/30 transition-colors text-sm sm:text-base cursor-pointer"
+                  className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/40 text-white rounded-full font-semibold transition-colors text-sm sm:text-base cursor-pointer shadow-md"
                 >
                   View Archive
                 </button>
@@ -145,7 +146,7 @@ export default function HeroSlideshow() {
             aria-selected={index === currentSlide}
             aria-label={`Go to slide ${index + 1}: ${slide.title}`}
             onClick={() => setCurrentSlide(index)}
-            className={`w-2.5 h-2.5 rounded-full transition-all ${index === currentSlide ? 'bg-[var(--accent-color)] w-8' : 'bg-white/50 hover:bg-white/80'}`}
+            className={`h-3 rounded-full transition-all border border-black/30 shadow-sm ${index === currentSlide ? 'bg-[var(--accent-color)] w-8' : 'w-3 bg-white/75 hover:bg-white'}`}
           />
         ))}
       </div>

@@ -81,10 +81,69 @@
   --shadow-premium: 0 4px 20px -4px rgba(60, 45, 30, 0.08), 0 1px 3px rgba(60, 45, 30, 0.04);
   --map-boundary-stroke: rgba(142, 40, 0, 0.35);
 
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
+  --radius-sm: 0.5rem;   /* 8px  - Buttons, inputs, small tags */
+  --radius-md: 1rem;     /* 16px - Cards, modal surfaces */
+  --radius-lg: 1.5rem;   /* 24px - Large containers */
+  --radius-pill: 9999px; /* Circular, pills, indicators */
 }
+
+/* ── Canonical Button & Scale Primitives (Usability System) ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--accent-color);
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+.btn-primary:hover {
+  background-color: var(--accent-crimson);
+  opacity: 0.95;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-card);
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+.btn-secondary:hover {
+  color: var(--text-primary);
+  border-color: var(--accent-color);
+}
+
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-primary);
+  color: var(--text-secondary);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.btn-pill:hover {
+  border-color: var(--accent-color);
+  color: var(--text-primary);
+}
+
 
 .light-mode {
   --bg-primary: #F8F5F0;
