@@ -182,7 +182,7 @@ export default function Home() {
             <span className="text-xs font-semibold tracking-wider text-[var(--accent-color)] block mb-1.5">
               Archival Monographs
             </span>
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-[var(--text-primary)]">
+            <h2 className="text-3xl font-serif font-bold text-[var(--text-primary)]">
               {t('heritage_spotlight')}
             </h2>
             <p className="text-sm md:text-base text-[var(--text-secondary)] max-w-2xl mt-2 leading-relaxed font-sans">
@@ -191,7 +191,7 @@ export default function Home() {
           </div>
           <Link
             to="/explore"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--accent-color)] hover:text-[var(--accent-crimson)] transition-colors self-start md:self-end group"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-[var(--border-color)] bg-[var(--bg-card)] hover:border-[var(--accent-color)] text-sm font-semibold text-[var(--accent-color)] hover:text-[var(--accent-crimson)] transition-all shadow-xs self-start md:self-end group"
           >
             <span>Explore All 222 Deities</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -228,7 +228,7 @@ export default function Home() {
               </div>
 
               <div className="p-6 flex-1 flex flex-col justify-between">
-                <div>
+                <div className="flex-1 flex flex-col">
                   <div className="flex flex-wrap gap-2 mb-3">
                     <span className="text-xs font-sans font-medium tracking-wide text-[var(--accent-color)] bg-[var(--accent-color)]/10 px-2.5 py-1 rounded-md border border-[var(--accent-color)]/20">
                       {deity.tradition}
@@ -242,7 +242,7 @@ export default function Home() {
                   </p>
                 </div>
 
-                <div className="pt-5 mt-5 border-t border-[var(--border-color)] flex items-center justify-start">
+                <div className="mt-auto pt-5 border-t border-[var(--border-color)] flex items-center justify-start">
                   <Link
                     to={`/deity/${deity.slug || deity.id}`}
                     className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--accent-color)] group-hover:text-[var(--accent-crimson)] transition-colors"
@@ -265,7 +265,7 @@ export default function Home() {
               <span className="text-xs font-semibold tracking-wider text-[var(--accent-color)] block mb-1.5">
                 Date-Aware Cultural Calendar
               </span>
-              <h2 className="text-3xl md:text-4xl font-serif font-bold text-[var(--text-primary)]">
+              <h2 className="text-3xl font-serif font-bold text-[var(--text-primary)]">
                 {t('calendar_title')}
               </h2>
               <p className="text-sm md:text-base text-[var(--text-secondary)] max-w-2xl mt-2 leading-relaxed">
@@ -274,7 +274,7 @@ export default function Home() {
             </div>
             <Link
               to="/calendar"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--accent-color)] text-white text-sm font-semibold hover:opacity-95 transition-opacity self-start md:self-end shadow-sm"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[var(--accent-color)] text-white text-sm font-semibold hover:bg-[var(--accent-crimson)] transition-colors self-start md:self-end shadow-sm"
             >
               <Calendar className="w-4 h-4" />
               <span>{t('view_all_festivals')}</span>
@@ -292,14 +292,14 @@ export default function Home() {
                   >
                     <div>
                       <div className="flex items-center justify-between mb-3">
-                        <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${
+                        <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
                           isNow 
                             ? 'bg-green-600/10 text-green-700 border border-green-600/20 animate-pulse' 
                             : 'bg-amber-500/10 text-amber-700 border border-amber-500/20'
                         }`}>
                           {isNow ? 'Happening Now' : 'Upcoming Festival'}
                         </span>
-                        <span className="text-xs font-mono text-[var(--text-muted)]">
+                        <span className="text-xs font-mono text-[var(--text-secondary)]">
                           {formatEventDate(event)}
                         </span>
                       </div>
@@ -315,23 +315,25 @@ export default function Home() {
                       </p>
                     </div>
 
-                    <div className="mt-5 pt-4 border-t border-[var(--border-color)] flex items-center justify-between">
+                    <div className="mt-auto pt-4 border-t border-[var(--border-color)] flex items-center justify-start gap-3 flex-wrap">
                       {event.deityId ? (
                         <Link 
                           to={`/deity/${event.deityId}`}
-                          className="text-xs font-semibold text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors inline-flex items-center gap-1.5"
+                          className="text-xs font-semibold text-[var(--accent-color)] hover:text-[var(--accent-crimson)] transition-colors inline-flex items-center gap-1.5"
                         >
                           <span>View Deity Shrine</span>
                           <ArrowRight className="w-3 h-3" />
                         </Link>
                       ) : (
-                        <span className="text-xs text-[var(--text-muted)]">Community Festival</span>
+                        <span className="text-xs text-[var(--text-secondary)] font-medium">Community Festival</span>
                       )}
+                      <span className="text-xs text-[var(--border-color)]" aria-hidden="true">•</span>
                       <Link 
                         to="/calendar" 
-                        className="text-xs text-[var(--accent-color)] hover:underline flex items-center gap-1 font-medium"
+                        className="text-xs text-[var(--text-secondary)] hover:text-[var(--accent-color)] transition-colors inline-flex items-center gap-1 font-medium"
                       >
-                        Details <ArrowRight className="w-3 h-3" />
+                        <span>Schedule Details</span>
+                        <ArrowRight className="w-3 h-3" />
                       </Link>
                     </div>
                   </div>
@@ -355,10 +357,10 @@ export default function Home() {
       {/* 5. Living Dev-Sanskriti Traditional Governance Framework */}
       <section className="max-w-7xl mx-auto px-4 md:px-8 py-20">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs uppercase tracking-[0.25em] text-[var(--accent-color)] font-bold block mb-2">
+          <span className="text-xs font-semibold tracking-wider text-[var(--accent-color)] block mb-2">
             Hereditary Custodianship & Architecture
           </span>
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-[var(--text-primary)] mb-4">
+          <h2 className="text-3xl font-serif font-bold text-[var(--text-primary)] mb-4">
             {t('traditional_governance')}
           </h2>
           <p className="text-sm md:text-base text-[var(--text-secondary)] leading-relaxed">
@@ -449,22 +451,22 @@ export default function Home() {
               <span className="text-xs uppercase tracking-[0.25em] text-[var(--accent-color)] font-bold block mb-2">
                 {t('sacred_topography')}
               </span>
-              <h2 className="text-3xl md:text-4xl font-serif font-bold text-[var(--text-primary)] mb-4">
+              <h2 className="text-3xl font-serif font-bold text-[var(--text-primary)] mb-4">
                 {t('himachal_atlas')}
               </h2>
               <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-6 font-sans">
                 {t('atlas_description')}
               </p>
 
-              <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-xl p-5 mb-6">
-                <p className="text-xs text-[var(--text-muted)] uppercase tracking-wider font-mono mb-1">
+              <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-5 mb-6 shadow-sm">
+                <p className="text-xs text-[var(--text-secondary)] font-semibold mb-1">
                   Active Regional Focus
                 </p>
                 <div className="flex items-center justify-between">
                   <span className="text-xl font-serif font-bold text-[var(--text-primary)]">
                     {selectedMapDistrict === 'All' ? 'Himachal Pradesh (Statewide)' : `${selectedMapDistrict} District`}
                   </span>
-                  <span className="text-xs px-2.5 py-1 rounded bg-[var(--accent-color)]/10 text-[var(--accent-color)] font-semibold">
+                  <span className="text-xs px-2.5 py-1 rounded-full bg-[var(--accent-color)]/10 text-[var(--accent-color)] font-semibold">
                     {selectedMapDistrict === 'All' 
                       ? `${stats.deitiesCount} Shrines` 
                       : `${deitiesData.filter(d => d.district === selectedMapDistrict).length} Shrines`}
@@ -475,7 +477,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={() => navigate(selectedMapDistrict === 'All' ? '/explore' : `/explore?district=${encodeURIComponent(selectedMapDistrict)}`)}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[var(--accent-color)] text-white text-sm font-semibold hover:opacity-95 transition-opacity shadow-sm"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[var(--accent-color)] text-white text-sm font-semibold hover:bg-[var(--accent-crimson)] transition-colors shadow-sm cursor-pointer"
                 >
                   <Compass className="w-4 h-4" />
                   <span>Explore {selectedMapDistrict === 'All' ? 'Sacred Atlas' : `${selectedMapDistrict} Atlas`}</span>
@@ -484,7 +486,7 @@ export default function Home() {
                 <button
                   onClick={() => setSelectedMapDistrict('All')}
                   disabled={selectedMapDistrict === 'All'}
-                  className="inline-flex items-center justify-center px-4 py-3 rounded-lg border border-[var(--border-color)] bg-[var(--bg-card)] text-[var(--text-secondary)] text-sm font-medium hover:text-[var(--text-primary)] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="inline-flex items-center justify-center px-5 py-3 rounded-full border border-[var(--border-color)] bg-[var(--bg-card)] text-[var(--text-secondary)] text-sm font-semibold hover:border-[var(--accent-color)] hover:text-[var(--text-primary)] transition-all disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer shadow-xs"
                 >
                   Reset Map
                 </button>
@@ -512,7 +514,7 @@ export default function Home() {
             Participatory Cultural Heritage
           </span>
 
-          <h2 className="text-2xl md:text-4xl font-serif font-bold text-[var(--text-primary)] mb-4">
+          <h2 className="text-2xl md:text-3xl font-serif font-bold text-[var(--text-primary)] mb-4">
             Preserve Your Valley&apos;s Sacred Lore
           </h2>
 
@@ -523,7 +525,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               to="/contribute"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg bg-[var(--accent-color)] text-white text-sm font-semibold hover:opacity-95 transition-opacity shadow-md"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[var(--accent-color)] text-white text-sm font-semibold hover:opacity-95 transition-opacity shadow-md"
             >
               <ShieldCheck className="w-4 h-4" />
               <span>Submit Local Deity Lore</span>
@@ -531,7 +533,7 @@ export default function Home() {
             </Link>
             <Link
               to="/explore"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] text-[var(--text-primary)] text-sm font-semibold hover:border-[var(--accent-color)] transition-colors"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-[var(--border-color)] bg-[var(--bg-primary)] text-[var(--text-primary)] text-sm font-semibold hover:border-[var(--accent-color)] transition-colors"
             >
               <span>Browse Existing Records</span>
             </Link>

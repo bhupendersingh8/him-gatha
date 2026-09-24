@@ -90,7 +90,7 @@ export default function HeroSlideshow() {
           {/* Content */}
           <div className="absolute inset-0 flex items-center justify-center text-center p-4">
             <div className={`max-w-4xl transform transition-all duration-1000 delay-300 ${index === currentSlide ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-              <h2 className="text-3xl sm:text-5xl md:text-7xl font-serif text-white mb-4 sm:mb-6 drop-shadow-lg tracking-wide sm:tracking-wider font-bold">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-serif text-white mb-4 sm:mb-6 drop-shadow-lg tracking-wide sm:tracking-wider font-bold">
                 {slide.title}
               </h2>
               <p className="text-base sm:text-lg md:text-xl text-white font-medium max-w-2xl mx-auto drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
@@ -107,7 +107,7 @@ export default function HeroSlideshow() {
                 </button>
                 <button 
                   onClick={() => navigate('/explore')}
-                  className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/40 text-white rounded-full font-semibold transition-colors text-sm sm:text-base cursor-pointer shadow-md"
+                  className="w-full sm:w-auto px-7 sm:px-9 py-3 bg-stone-900/80 hover:bg-black text-white rounded-full font-semibold transition-all border-2 border-white/70 backdrop-blur-md shadow-lg hover:shadow-xl text-sm sm:text-base cursor-pointer"
                 >
                   View Archive
                 </button>

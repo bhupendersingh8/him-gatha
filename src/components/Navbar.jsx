@@ -87,10 +87,10 @@ export default function Navbar({ theme, toggleTheme, onSearch }) {
                 to={link.to}
                 end={link.end}
                 className={({ isActive }) =>
-                  `py-1.5 transition-colors duration-150 border-b-2 font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-color)] rounded-t-sm ${
+                  `px-3.5 py-1.5 rounded-full transition-all duration-150 font-medium text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-color)] ${
                     isActive
-                      ? 'text-[var(--accent-color)] font-semibold border-[var(--accent-color)]'
-                      : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] border-transparent'
+                      ? 'bg-[var(--accent-color)]/10 text-[var(--accent-color)] font-semibold border border-[var(--accent-color)]/30 shadow-xs'
+                      : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-black/5 border border-transparent'
                   }`
                 }
               >

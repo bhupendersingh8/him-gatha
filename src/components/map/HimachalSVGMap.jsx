@@ -209,7 +209,7 @@ export default function HimachalSVGMap({ onDistrictSelect, selectedDistrict }) {
             Back to Himachal Map
           </button>
           <div className="text-right">
-            <span className="text-[9px] uppercase tracking-wider text-[var(--text-muted)] font-mono">District view</span>
+            <span className="text-xs uppercase tracking-wider text-[var(--text-secondary)] font-mono font-medium">District view</span>
             <h3 className="text-lg font-serif text-[var(--accent-color)] leading-tight">{zoomedDistrict}</h3>
           </div>
         </div>
