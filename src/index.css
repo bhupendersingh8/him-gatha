@@ -1,35 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-serif: 'Cinzel', serif;
-  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-display: 'Cinzel', serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Inter', sans-serif;
 
-  /* Himalayan Sacred Gold & Ochre Palette */
+  /* Himalayan Archival HSL-based and semantic palette */
+  --color-crimson-50: #fdf2f2;
+  --color-crimson-100: #fde8e8;
+  --color-crimson-200: #fbd5d5;
+  --color-crimson-500: #b91c1c;
+  --color-crimson-600: #991b1b;
+  --color-crimson-700: #7f1d1d;
+  --color-crimson-800: #6b1d1d;
+  --color-crimson-900: #4c1d15;
+
   --color-gold-50: #fffbeb;
   --color-gold-100: #fef3c7;
   --color-gold-200: #fde68a;
-  --color-gold-400: #fbbf24;
   --color-gold-500: #f59e0b;
   --color-gold-600: #d97706;
   --color-gold-700: #b45309;
 
-  --color-charcoal-900: #0a0a0b;
-  --color-charcoal-800: #121214;
-  --color-charcoal-700: #18181b;
+  --color-sandstone: #f8f5f0;
+  --color-birch: #f1ede4;
+  --color-charcoal: #1c1917;
+  --color-charcoal-light: #292524;
+  --color-charcoal-card: #ffffff;
+  --color-cream: #faf7f2;
+  --color-cream-card: #fdfbf7;
 
   /* Archival gentle transitions & animations */
-  --animate-fade-in-up: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  --animate-fade-in: fadeIn 0.4s ease-out forwards;
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-glow: glow 2s ease-in-out infinite alternate;
+  --animate-fade-in-up: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-fade-in: fadeIn 0.3s ease-out forwards;
+  --animate-slide-in-right: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -42,32 +53,33 @@
   to { opacity: 1; }
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-@keyframes glow {
-  0% { text-shadow: 0 0 10px rgba(245, 158, 11, 0.5), 0 0 20px rgba(245, 158, 11, 0.3); }
-  100% { text-shadow: 0 0 20px rgba(245, 158, 11, 0.8), 0 0 40px rgba(245, 158, 11, 0.5); }
-}
-
-:root, .dark-mode {
-  /* ── Himalayan Sacred Gold Obsidian Theme (Signature July/August Aura) ── */
-  --bg-primary: #0a0a0b;           /* Obsidian Deep Himalayan Night */
-  --bg-secondary: #121214;         /* Rich Charcoal Elevation */
-  --bg-card: #18181b;              /* Premium Card Surface */
-  --text-primary: #f8fafc;         /* Pure crisp Himalayan snow text */
-  --text-secondary: rgba(255, 255, 255, 0.72); /* Muted slate white */
-  --text-muted: #94a3b8;           /* Subtle slate */
-  --border-color: rgba(245, 158, 11, 0.20); /* Sacred Temple Gold Border */
-  --accent-color: #f59e0b;         /* Sacred Gold / Amber */
-  --accent-gold: #fbbf24;          /* Luminous Temple Gold */
-  --accent-crimson: #d97706;       /* Deep Gold / Ochre */
-  --glass-bg: rgba(18, 18, 20, 0.85);
-  --glass-border: rgba(245, 158, 11, 0.22);
-  --shadow-premium: 0 8px 32px 0 rgba(0, 0, 0, 0.65);
-  --map-boundary-stroke: rgba(245, 158, 11, 0.45);
+:root {
+  /* ── Himalayan Cultural Archive Light-First Theme ── */
+  --bg-primary: #F8F5F0;           /* Warm Sandstone Cream */
+  --bg-secondary: #F1EDE4;         /* Birch Bark / Aged Parchment */
+  --bg-card: #FFFFFF;              /* Clean warm card surface */
+  --text-primary: #1C1917;         /* Deep Stone Ink - WCAG AAA contrast */
+  --text-secondary: #57534E;       /* Pahari Slate - WCAG AA contrast > 4.5:1 */
+  --text-muted: #57534E;           /* Stone 600 - WCAG AA contrast > 4.5:1 on light backgrounds */
+  --border-color: rgba(60, 45, 30, 0.12); /* Subtle warm border */
+  --accent-color: #8E2800;         /* Temple Crimson / Vermillion - primary action */
+  --accent-gold: #855800;          /* Deep Burnished Gold / Ochre - WCAG AA contrast > 4.5:1 on light */
+  --accent-crimson: #8E2800;       /* Temple Crimson */
+  --glass-bg: rgba(248, 245, 240, 0.85);
+  --glass-border: rgba(60, 45, 30, 0.10);
+  --shadow-premium: 0 4px 20px -4px rgba(60, 45, 30, 0.08), 0 1px 3px rgba(60, 45, 30, 0.04);
+  --map-boundary-stroke: rgba(142, 40, 0, 0.35);
 
   --radius-sm: 0.5rem;   /* 8px  - Buttons, inputs, small tags */
   --radius-md: 1rem;     /* 16px - Cards, modal surfaces */
@@ -75,22 +87,97 @@
   --radius-pill: 9999px; /* Circular, pills, indicators */
 }
 
+/* ── Canonical Button & Scale Primitives (Usability System) ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--accent-color);
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+.btn-primary:hover {
+  background-color: var(--accent-crimson);
+  opacity: 0.95;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-card);
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+.btn-secondary:hover {
+  color: var(--text-primary);
+  border-color: var(--accent-color);
+}
+
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-primary);
+  color: var(--text-secondary);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.btn-pill:hover {
+  border-color: var(--accent-color);
+  color: var(--text-primary);
+}
+
+
 .light-mode {
-  /* ── Himalayan Warm Stone & Gold Light Theme ── */
-  --bg-primary: #fdfbf7;
-  --bg-secondary: #f4ede4;
-  --bg-card: #ffffff;
-  --text-primary: #1e293b;
-  --text-secondary: #64748b;
-  --text-muted: #78716c;
-  --border-color: rgba(217, 119, 6, 0.22);
-  --accent-color: #b45309;         /* Deep Himalayan Gold / Bronze */
-  --accent-gold: #d97706;          /* Amber Gold */
-  --accent-crimson: #92400e;
-  --glass-bg: rgba(255, 255, 255, 0.92);
-  --glass-border: rgba(217, 119, 6, 0.20);
-  --shadow-premium: 0 8px 24px -4px rgba(180, 83, 9, 0.12);
-  --map-boundary-stroke: rgba(217, 119, 6, 0.40);
+  --bg-primary: #F8F5F0;
+  --bg-secondary: #F1EDE4;
+  --bg-card: #FFFFFF;
+  --text-primary: #1C1917;
+  --text-secondary: #57534E;
+  --text-muted: #57534E;
+  --border-color: rgba(60, 45, 30, 0.12);
+  --accent-color: #8E2800;
+  --accent-gold: #855800;
+  --accent-crimson: #8E2800;
+  --glass-bg: rgba(248, 245, 240, 0.85);
+  --glass-border: rgba(60, 45, 30, 0.10);
+  --shadow-premium: 0 4px 20px -4px rgba(60, 45, 30, 0.08), 0 1px 3px rgba(60, 45, 30, 0.04);
+  --map-boundary-stroke: rgba(142, 40, 0, 0.35);
+}
+
+.dark-mode {
+  /* Slate Obsidian Theme — Retained for fallback */
+  --bg-primary: #0E0D0B;
+  --bg-secondary: #181613;
+  --bg-card: #221E19;
+  --text-primary: #F5F2EC;
+  --text-secondary: #D6D3D1;
+  --text-muted: #A8A29E;
+  --border-color: rgba(197, 155, 39, 0.18);
+  --accent-color: #E5B842;
+  --accent-gold: #E5B842;
+  --accent-crimson: #C53030;
+  --glass-bg: rgba(14, 13, 11, 0.85);
+  --glass-border: rgba(197, 155, 39, 0.15);
+  --shadow-premium: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
+  --map-boundary-stroke: rgba(197, 155, 39, 0.35);
 }
 
 body {
@@ -130,34 +217,34 @@ body {
 
 .glass-card {
   background: var(--bg-card);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-premium);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .glass-card:hover {
-  border-color: var(--accent-gold);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 36px -4px rgba(245, 158, 11, 0.25), 0 4px 12px rgba(0, 0, 0, 0.5);
+  border-color: rgba(142, 40, 0, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -4px rgba(60, 45, 30, 0.10), 0 2px 6px rgba(60, 45, 30, 0.05);
 }
 
-/* Tactile Elevation Card with Sacred Golden Lift */
+/* Tactile Elevation Card (Calm Editorial Lift) */
 .vengeance-card {
   position: relative;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
   will-change: transform, box-shadow;
 }
 
 .vengeance-card:hover {
-  transform: translateY(-4px) scale(1.008);
-  border-color: var(--accent-gold);
-  box-shadow: 0 16px 40px -8px rgba(245, 158, 11, 0.25), 0 4px 14px rgba(0, 0, 0, 0.45);
+  transform: translateY(-2px);
+  border-color: rgba(142, 40, 0, 0.25);
+  box-shadow: 0 8px 20px -4px rgba(60, 45, 30, 0.10), 0 2px 6px rgba(60, 45, 30, 0.04);
 }
 
 /* Interactive Pill Component */
@@ -169,7 +256,7 @@ body {
   border-radius: 9999px;
   font-size: 0.8125rem;
   font-weight: 500;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
   border: 1px solid var(--border-color);
   background: var(--bg-card);
   color: var(--text-secondary);
@@ -178,11 +265,10 @@ body {
 }
 
 .skiper-pill:hover, .skiper-pill.active {
-  color: var(--accent-gold);
-  border-color: var(--accent-gold);
-  background: rgba(245, 158, 11, 0.12);
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+  background: rgba(142, 40, 0, 0.05);
   transform: translateY(-1px);
-  box-shadow: 0 0 12px rgba(245, 158, 11, 0.2);
 }
 
 /* Editorial Serif Headings */
@@ -215,18 +301,12 @@ h1, h2, h3, h4, h5, h6 {
   100% { transform: scale(2.2); opacity: 0; }
 }
 
-/* Sacred Temple Glowing Card Border */
+/* Restrained Archival Card Border (replaces neon sweep) */
 .glowing-border {
   position: relative;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   background: var(--bg-card);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.glowing-border:hover {
-  border-color: rgba(245, 158, 11, 0.5);
-  box-shadow: 0 0 25px rgba(245, 158, 11, 0.25);
 }
 
 /* Background Canvas Layer */
@@ -245,26 +325,25 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--bg-card) !important;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 2px rgba(60, 45, 30, 0.04);
   color: var(--text-primary);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .glass-input:focus {
-  background: var(--bg-card) !important;
-  border-color: var(--accent-gold);
+  background: #FFFFFF !important;
+  border-color: var(--accent-color);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+  box-shadow: 0 0 0 3px rgba(142, 40, 0, 0.12);
 }
 
-/* Sacred Temple Golden Accents */
+/* Clean Editorial Text Accents (Glows neutralized) */
 .text-glow-gold {
   color: var(--accent-gold);
-  text-shadow: 0 0 12px rgba(245, 158, 11, 0.5);
 }
 
 .text-gradient-gold {
-  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+  background: linear-gradient(135deg, #8E2800 0%, #C59B27 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
