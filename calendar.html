@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Calendar | HIM-GATHA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f5f5f4; color: #1c1917; }
+        h1, h2, h3, h4, .serif { font-family: 'Cinzel', serif; }
+        .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+        .cal-day { aspect-ratio: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 8px; border: 1px solid #e7e5e4; font-size: 14px; background: white; }
+        .has-ev { background: #fef3c7; border-color: #f59e0b; color: #92400e; font-weight: 700; }
+        .ev-dot { width: 5px; height: 5px; background: #d97706; border-radius: 50%; margin-top: 2px; }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Global Header -->
+    <nav class="bg-stone-900 text-stone-100 sticky top-0 z-50 shadow-2xl border-b border-amber-600/30">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between gap-6">
+            <a href="index.html" class="flex items-center space-x-3 min-w-max">
+                <span class="text-3xl text-amber-500 drop-shadow-[0_0_8px_rgba(217,119,6,0.8)]">🔱</span>
+                <div class="hidden sm:flex flex-col">
+                    <span class="font-bold text-lg tracking-widest uppercase serif text-amber-50">HIM-<span class="text-amber-500">GATHA</span></span>
+                    <span class="text-[9px] tracking-[0.2em] text-stone-400 uppercase">Celestial Governance Archive</span>
+                </div>
+            </a>
+            <div class="flex-1"></div>
+            <div class="flex items-center space-x-6">
+                <div class="hidden lg:flex space-x-4 text-[10px] font-bold uppercase tracking-widest">
+                    <a href="index.html" class="text-stone-400 hover:text-amber-500 transition">Home</a>
+                    <a href="gur.html" class="text-stone-400 hover:text-amber-500 transition">Gur Registry</a>
+                    <a href="family.html" class="text-stone-400 hover:text-amber-500 transition">Lineages</a>
+                    <a href="calendar.html" class="text-amber-500 transition">Calendar</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main class="max-w-7xl mx-auto px-4 py-16">
+        <div class="mb-12 border-l-4 border-amber-600 pl-6">
+            <h2 class="text-3xl font-bold text-stone-900 serif">Event Calendar</h2>
+            <p class="text-stone-500 mt-2">Sacred festivals and Melas for the year 2026.</p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+            <div class="lg:col-span-2 bg-white p-10 rounded-3xl border border-stone-200 shadow-sm"><div id="calGrid" class="cal-grid"></div></div>
+            <div id="melaList" class="space-y-4"><h4 class="text-xs font-bold text-stone-400 uppercase tracking-widest mb-4">Upcoming in October</h4></div>
+        </div>
+    </main>
+    <script>
+        let deities = JSON.parse(localStorage.getItem('KULDEV_DB_V4')) || [];
+        const grid = document.getElementById('calGrid');
+        const list = document.getElementById('melaList');
+        
+        // Future Events for Presentation
+        const upcomingEvents = [
+            { date: '2026-10-04', title: 'Kullu Dussehra Procession', location: 'Dhalpur Maidan' },
+            { date: '2026-10-12', title: 'Mandi Shivaratri Planning', location: 'Bhootnath Temple' },
+            { date: '2026-10-18', title: 'Fagli Festival', location: 'Kinnaur Valley' },
+            { date: '2026-10-25', title: 'Lavi Fair Preparations', location: 'Rampur Bushahr' },
+            { date: '2026-11-02', title: 'Renuka Ji Fair', location: 'Sirmaur' }
+        ];
+
+        const yr=2026, mo=9; // Oct
+        const days = new Date(yr, mo+1, 0).getDate();
+        const first = new Date(yr, mo, 1).getDay();
+        
+        grid.innerHTML = ['S','M','T','W','T','F','S'].map(d=>`<div class="text-center text-[10px] font-bold text-stone-300 mb-2">${d}</div>`).join('') +
+            Array(first).fill('<div></div>').join('') +
+            Array.from({length:days}, (_,i)=>i+1).map(d => {
+                const dateStr = `2026-10-${(d).toString().padStart(2,'0')}`;
+                const has = upcomingEvents.find(x => x.date === dateStr);
+                return `<div class="cal-day ${has?'has-ev':''}"> ${d} ${has?'<div class="ev-dot"></div>':''} </div>`;
+            }).join('');
+        
+        list.innerHTML = `<h4 class="text-xs font-bold text-stone-400 uppercase tracking-widest mb-4">Upcoming Events</h4>` + 
+            upcomingEvents.map(x=>`
+            <div class="bg-amber-50 p-4 rounded-xl border border-amber-100 mb-4 shadow-sm hover:scale-105 transition">
+                <div class="text-[10px] font-bold text-amber-600 mb-1">${new Date(x.date).toDateString()}</div>
+                <div class="font-bold text-stone-800 text-sm mb-1">${x.title}</div>
+                <div class="text-[10px] font-bold text-stone-500 tracking-widest uppercase">📍 ${x.location}</div>
+            </div>
+        `).join('');
+    </script>
+</body>
+</html>
