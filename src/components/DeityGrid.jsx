@@ -164,9 +164,9 @@ export default function DeityGrid({
               placeholder={t('search_placeholder')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 rounded-full glass-input text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none font-sans"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[var(--bg-card)] border border-[var(--border-color)] text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[var(--accent-color)] font-sans text-sm shadow-sm transition-all"
             />
-            <Search className="absolute left-4 top-3.5 w-5 h-5 text-[var(--text-muted)]" />
+            <Search className="absolute left-3.5 top-3 w-4 h-4 text-[var(--text-muted)]" />
           </div>
           {/* Mobile Filter Drawer Trigger */}
           <button
@@ -243,14 +243,14 @@ export default function DeityGrid({
         </div>
       )}
 
-      {/* Grid */}
-      <div className="mb-6 flex justify-between items-end">
-        <h2 className="text-3xl font-serif text-[var(--text-primary)]">{t('deity_archive')}</h2>
-        <p className="text-sm text-[var(--text-muted)] font-sans">{filteredDeities.length} records found</p>
+      {/* Grid Header */}
+      <div className="mb-6 flex justify-between items-end border-b border-[var(--border-gold-subtle)] pb-3">
+        <h2 className="text-2xl sm:text-3xl font-serif text-[var(--text-primary)] font-bold">{t('deity_archive')}</h2>
+        <span className="archival-stamp">{filteredDeities.length} Verified Records</span>
       </div>
 
       {filteredDeities.length === 0 ? (
-        <div className="py-20 text-center glass rounded-xl border border-[var(--border-color)]">
+        <div className="py-20 text-center archival-plate rounded-2xl border border-[var(--border-color)] shadow-sm max-w-lg mx-auto">
           <p className="text-[var(--text-secondary)] font-serif text-lg">{t('no_deities_found')}</p>
         </div>
       ) : (
@@ -265,9 +265,9 @@ export default function DeityGrid({
               <button
                 type="button"
                 onClick={() => setVisibleCount(prev => prev + 12)}
-                className="px-6 py-2.5 rounded-full border border-[var(--accent-color)]/30 text-[var(--accent-color)] bg-transparent hover:bg-[var(--accent-color)]/10 transition-all font-semibold uppercase tracking-wider text-xs cursor-pointer focus-visible:ring-2 focus-visible:ring-[var(--accent-color)]"
+                className="btn-secondary px-8 py-3 rounded-full font-semibold uppercase tracking-wider text-xs cursor-pointer shadow-sm hover:border-[var(--accent-gold)] hover:text-[var(--accent-color)] transition-all"
               >
-                Reveal More Sacred Records
+                Reveal More Sacred Records ({filteredDeities.length - visibleCount} Remaining)
               </button>
             </div>
           )}

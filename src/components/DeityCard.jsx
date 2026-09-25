@@ -69,16 +69,22 @@ export default function DeityCard({ deity }) {
             </div>
           )}
 
-          {/* District Floating Badge */}
-          <div className="absolute top-3 left-3 z-10 flex gap-1.5">
-            <span className="px-2.5 py-0.5 rounded-full text-[10px] uppercase font-bold tracking-wider bg-black/60 backdrop-blur-md text-white border border-white/15 shadow-sm">
+          {/* District & Catalog ID Floating Badges */}
+          <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 flex-wrap">
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] uppercase font-bold tracking-wider bg-black/65 backdrop-blur-md text-white border border-white/20 shadow-sm">
               {displayDistrict}
             </span>
             {architectureStyle && (
-              <span className="px-2 py-0.5 rounded-full text-[9px] font-mono font-semibold uppercase tracking-wider bg-amber-900/60 backdrop-blur-md text-amber-200 border border-amber-300/20 shadow-sm hidden sm:inline-block">
+              <span className="px-2 py-0.5 rounded-full text-[9px] font-mono font-semibold uppercase tracking-wider bg-amber-950/70 backdrop-blur-md text-amber-200 border border-amber-300/25 shadow-sm hidden sm:inline-block">
                 {architectureStyle}
               </span>
             )}
+          </div>
+
+          <div className="absolute top-3 right-3 z-10">
+            <span className="px-2 py-0.5 rounded text-[9px] font-mono uppercase tracking-wider bg-black/50 backdrop-blur-md text-stone-300 border border-white/10 font-bold">
+              #{deity.id}
+            </span>
           </div>
         </div>
         
@@ -105,7 +111,7 @@ export default function DeityCard({ deity }) {
               <span className="truncate">{deity.village || deity.region || displayDistrict}</span>
             </div>
             
-            <span className="inline-flex items-center gap-1 text-xs text-[var(--accent-color)] font-semibold tracking-wide group-hover:translate-x-0.5 transition-transform shrink-0">
+            <span className="inline-flex items-center gap-1 text-xs text-[var(--accent-color)] font-semibold tracking-wide group-hover:translate-x-0.5 transition-transform shrink-0 font-sans">
               <span>{t('view_lore') || 'Explore'}</span>
               <ArrowRight className="w-3 h-3" />
             </span>

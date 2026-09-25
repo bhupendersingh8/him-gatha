@@ -82,16 +82,16 @@ export default function AudioNarrativePlayer({ src, title }) {
       <audio ref={audioRef} preload="metadata" src={src} controlsList="nodownload" />
 
       {error ? (
-        <p role="alert" className="relative z-10 mt-5 rounded-lg border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-200">
-          This recording is temporarily unavailable.
+        <p role="alert" className="relative z-10 mt-5 rounded-lg border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-600 dark:text-red-200">
+          This recording is temporarily unavailable in the archive.
         </p>
       ) : (
-        <div className="relative z-10 mt-6 grid grid-cols-[auto_1fr] items-center gap-x-4 gap-y-3">
+        <div className="relative z-10 mt-6 grid grid-cols-[auto_1fr] items-center gap-x-4 gap-y-3 bg-[var(--bg-primary)]/60 p-4 rounded-xl border border-[var(--border-color)]">
           <button
             type="button"
             onClick={togglePlayback}
             aria-label={playing ? 'Pause audio narrative' : 'Play audio narrative'}
-            className="flex h-11 w-11 items-center justify-center rounded-full bg-[var(--accent-color)] text-[#0b0a08] transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-105 focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent-color)]"
+            className="flex h-11 w-11 items-center justify-center rounded-full bg-[var(--accent-color)] text-white dark:text-[#0b0a08] transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-105 shadow-sm focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent-color)] cursor-pointer"
           >
             {playing ? <Pause className="h-5 w-5" /> : <Play className="ml-0.5 h-5 w-5" />}
           </button>
@@ -106,7 +106,7 @@ export default function AudioNarrativePlayer({ src, title }) {
               aria-label="Audio progress"
               className="h-2 w-full cursor-pointer accent-[var(--accent-color)]"
             />
-            <div className="mt-1 flex justify-between text-xs tabular-nums text-[var(--text-secondary)]">
+            <div className="mt-1 flex justify-between text-xs tabular-nums text-[var(--text-secondary)] font-mono">
               <span>{formatTime(currentTime)}</span>
               <span>{formatTime(duration)}</span>
             </div>

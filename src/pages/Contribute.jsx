@@ -7,40 +7,41 @@ export default function Contribute() {
   const { t } = useTranslation();
 
   return (
-    <div className="min-h-screen py-10 px-4 md:px-8">
+    <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-300 pt-24 pb-20 px-4 md:px-8 font-sans">
       <SEOHead 
         title="Contribute Cultural Record | HIM GATHA"
         description="Help document the living Dev-Sanskriti of Himachal Pradesh. Submit verified deity lore, coordinates, and photographic records."
       />
 
       {/* Editorial Header */}
-      <div className="max-w-4xl mx-auto mb-8 text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[rgba(142,40,0,0.08)] border border-[rgba(142,40,0,0.15)] text-[var(--accent-color)] text-xs font-semibold mb-4">
+      <div className="max-w-4xl mx-auto mb-10 text-center">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[var(--accent-gold)]/10 border border-[var(--border-gold-subtle)] text-[var(--accent-gold)] text-[11px] font-bold uppercase tracking-widest mb-4 font-mono shadow-sm">
           <ScrollText className="w-3.5 h-3.5" aria-hidden="true" />
-          <span>Community Cultural Registry</span>
+          <span>Dev-Sanskriti Living Registry • Folk Lore Archival</span>
         </div>
 
-        <h1 className="text-3xl md:text-4xl font-serif font-bold text-[var(--text-primary)] mb-3">
+        <h1 className="text-4xl md:text-5xl font-serif font-bold text-[var(--text-primary)] mb-4 tracking-tight">
           {t('contribute_title')}
         </h1>
 
-        <p className="text-sm md:text-base text-[var(--text-secondary)] leading-relaxed max-w-2xl mx-auto">
+        <p className="text-sm md:text-base text-[var(--text-secondary)] leading-relaxed max-w-2xl mx-auto font-sans">
           {t('contribute_desc')}
         </p>
 
-        <div className="mt-4 flex flex-wrap items-center justify-center gap-4 text-xs text-[var(--text-muted)]">
-          <span className="flex items-center gap-1.5">
-            <ShieldCheck className="w-4 h-4 text-[var(--accent-gold)]" aria-hidden="true" />
-            Moderated by traditional Kardars & researchers
+        {/* Archival Moderation Badges */}
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-xs text-[var(--text-muted)] bg-[var(--bg-card)]/80 py-2.5 px-6 rounded-full border border-[var(--border-color)] max-w-2xl mx-auto shadow-sm">
+          <span className="flex items-center gap-1.5 font-medium text-[var(--accent-gold)]">
+            <ShieldCheck className="w-4 h-4" aria-hidden="true" />
+            Moderated by Temple Kardars & Scholars
           </span>
           <span>•</span>
-          <span>Verified village bounds only (HP)</span>
+          <span>Verified Himachal Bounds (30°N–33.5°N)</span>
           <span>•</span>
-          <span>Max 5MB per authentic photograph</span>
+          <span>Max 5MB Authentic Imagery</span>
         </div>
       </div>
 
-      {/* Embedded Submission Form (Untouched logic) */}
+      {/* Embedded Submission Form */}
       <div className="max-w-4xl mx-auto">
         <ContributionForm />
       </div>
