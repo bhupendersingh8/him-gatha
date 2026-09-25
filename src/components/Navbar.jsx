@@ -37,11 +37,11 @@ export default function Navbar({ theme, toggleTheme, onSearch }) {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    if (onSearch) {
-      onSearch(searchVal);
+    if (searchVal.trim()) {
+      navigate(`/explore?q=${encodeURIComponent(searchVal.trim())}`);
+    } else {
+      navigate('/explore');
     }
-    // Navigate to explore or home to show results
-    navigate('/');
     setMobileMenuOpen(false);
   };
 
@@ -62,19 +62,19 @@ export default function Navbar({ theme, toggleTheme, onSearch }) {
         Skip to main content
       </a>
 
-      <header className="sticky top-0 z-50 w-full bg-[var(--bg-primary)]/92 backdrop-blur-md border-b border-[var(--border-color)] transition-colors duration-200">
+      <header className="sticky top-0 z-50 w-full bg-[var(--bg-primary)]/90 backdrop-blur-md border-b border-[var(--border-color)] transition-colors duration-200">
         <nav aria-label="Main Navigation" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
           
           {/* Brand Logo */}
           <Link 
             to="/" 
-            className="flex items-center gap-2.5 py-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-color)] rounded-md"
+            className="flex items-center gap-2.5 py-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-color)] rounded-md group"
             aria-label="HIM GATHA — Return to Home"
           >
-            <span className="text-2xl md:text-3xl font-serif font-bold tracking-tight text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors">
+            <span className="text-2xl md:text-3xl font-display font-bold tracking-tight text-[var(--text-primary)] group-hover:text-[var(--accent-color)] transition-colors">
               हिम गाथा
             </span>
-            <span className="hidden sm:inline-block text-xs uppercase tracking-wider text-[var(--text-secondary)] font-sans font-semibold border-l border-[var(--border-color)] pl-2.5 py-0.5">
+            <span className="hidden sm:inline-block text-[10px] uppercase tracking-[0.2em] text-[var(--accent-gold)] font-mono font-bold border-l border-[var(--border-color)] pl-2.5 py-0.5">
               Archive
             </span>
           </Link>

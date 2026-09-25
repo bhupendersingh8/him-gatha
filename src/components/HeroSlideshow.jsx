@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, Compass } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Compass, Sparkles } from 'lucide-react';
 
 const SLIDES = [
   {
@@ -85,31 +85,39 @@ export default function HeroSlideshow() {
           ></div>
           
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-black/70 to-black/35"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-black/65 to-black/40"></div>
           
           {/* Content */}
           <div className="absolute inset-0 flex items-center justify-center text-center p-4">
             <div className={`max-w-4xl transform transition-all duration-1000 delay-300 ${index === currentSlide ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-              <h2 className="text-3xl sm:text-5xl md:text-7xl font-serif text-white mb-4 sm:mb-6 drop-shadow-lg tracking-wide sm:tracking-wider font-bold">
+              
+              {/* Luxury Archive Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-[var(--accent-gold)]/40 text-[var(--accent-gold)] text-xs font-semibold tracking-[0.2em] uppercase mb-4 sm:mb-6 shadow-xl">
+                <Sparkles className="w-3.5 h-3.5 text-[var(--accent-gold)] animate-pulse" />
+                <span>Living Dev-Sanskriti Archive</span>
+              </div>
+
+              <h1 className="text-3xl sm:text-5xl md:text-7xl font-serif text-white mb-4 sm:mb-6 drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)] tracking-tight font-bold leading-[1.1]">
                 {slide.title}
-              </h2>
-              <p className="text-base sm:text-lg md:text-xl text-white font-medium max-w-2xl mx-auto drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+              </h1>
+              
+              <p className="text-base sm:text-lg md:text-xl text-slate-100 font-sans font-normal max-w-2xl mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] leading-relaxed">
                 {slide.subtitle}
               </p>
               
-              <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full">
+              <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
                 <button 
                   onClick={() => navigate(slide.targetUrl || '/explore')}
-                  className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-[var(--accent-color)] text-white rounded-full font-semibold hover:bg-[var(--accent-crimson)] transition-colors shadow-lg text-sm sm:text-base cursor-pointer inline-flex items-center justify-center gap-2"
+                  className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-[var(--accent-color)] via-[#9e2d03] to-[var(--accent-color)] text-white rounded-full font-semibold hover:shadow-[0_8px_25px_rgba(142,40,0,0.4)] transition-all duration-300 hover:scale-105 active:scale-95 text-sm sm:text-base cursor-pointer inline-flex items-center justify-center gap-2.5 shadow-lg border border-white/10"
                 >
-                  <Compass className="w-4 h-4 sm:w-5 sm:h-5" />
-                  {slide.targetUrl?.startsWith('/deity') ? 'Explore Deity Dossier' : 'Explore Sacred Atlas'}
+                  <Compass className="w-4 h-4 sm:w-5 sm:h-5 text-amber-200" />
+                  <span>{slide.targetUrl?.startsWith('/deity') ? 'Read Archival Dossier' : 'Explore Sacred Atlas'}</span>
                 </button>
                 <button 
                   onClick={() => navigate('/explore')}
-                  className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/40 text-white rounded-full font-semibold transition-colors text-sm sm:text-base cursor-pointer shadow-md"
+                  className="w-full sm:w-auto px-8 py-3.5 bg-black/45 hover:bg-black/70 backdrop-blur-md border border-white/30 hover:border-white/60 text-white rounded-full font-semibold transition-all duration-300 text-sm sm:text-base cursor-pointer shadow-md hover:scale-105 active:scale-95"
                 >
-                  View Archive
+                  Browse 222 Shrines
                 </button>
               </div>
             </div>
@@ -122,22 +130,25 @@ export default function HeroSlideshow() {
         type="button"
         onClick={prevSlide}
         aria-label="Previous slide"
-        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/40 text-white hover:bg-black/60 backdrop-blur-sm opacity-70 md:opacity-0 md:group-hover:opacity-100 transition-opacity cursor-pointer"
+        className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/40 text-white hover:bg-black/70 border border-white/20 backdrop-blur-md opacity-80 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 cursor-pointer hover:scale-110"
       >
-        <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8" />
+        <ChevronLeft className="w-6 h-6" />
       </button>
       
       <button 
         type="button"
         onClick={nextSlide}
         aria-label="Next slide"
-        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/40 text-white hover:bg-black/60 backdrop-blur-sm opacity-70 md:opacity-0 md:group-hover:opacity-100 transition-opacity cursor-pointer"
+        className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/40 text-white hover:bg-black/70 border border-white/20 backdrop-blur-md opacity-80 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 cursor-pointer hover:scale-110"
       >
-        <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8" />
+        <ChevronRight className="w-6 h-6" />
       </button>
       
-      {/* Indicators */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-1" role="tablist" aria-label="Slide indicators">
+      {/* Chapter Indicator Bar */}
+      <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 sm:gap-3 bg-black/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/15" role="tablist" aria-label="Slide chapters">
+        <span className="text-[10px] font-mono text-[var(--accent-gold)] uppercase tracking-widest hidden sm:inline-block pr-1 font-semibold">
+          Exhibition
+        </span>
         {SLIDES.map((slide, index) => (
           <button
             key={index}
@@ -146,13 +157,20 @@ export default function HeroSlideshow() {
             aria-selected={index === currentSlide}
             aria-label={`Go to slide ${index + 1}: ${slide.title}`}
             onClick={() => setCurrentSlide(index)}
-            className="w-8 h-8 flex items-center justify-center cursor-pointer transition-transform hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full"
+            className="flex items-center gap-1.5 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-gold)] rounded-full transition-all"
           >
             <span
-              className={`h-3 rounded-full transition-all border border-black/30 shadow-sm ${
-                index === currentSlide ? 'bg-[var(--accent-color)] w-7' : 'w-3 bg-white/80 hover:bg-white'
+              className={`h-2 rounded-full transition-all duration-500 ${
+                index === currentSlide 
+                  ? 'bg-gradient-to-r from-[var(--accent-color)] to-[var(--accent-gold)] w-8 shadow-[0_0_10px_rgba(212,175,55,0.6)]' 
+                  : 'w-2 bg-white/40 hover:bg-white/70'
               }`}
             />
+            {index === currentSlide && (
+              <span className="text-[11px] font-mono text-white hidden md:inline-block font-semibold">
+                0{index + 1}
+              </span>
+            )}
           </button>
         ))}
       </div>

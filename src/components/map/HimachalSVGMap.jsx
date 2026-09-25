@@ -249,19 +249,19 @@ export default function HimachalSVGMap({ onDistrictSelect, selectedDistrict }) {
                     style={{
                       opacity,
                       fill: isSelected 
-                        ? 'rgba(212, 175, 55, 0.25)' 
+                        ? 'rgba(197, 155, 39, 0.32)' 
                         : isHovered 
-                          ? 'rgba(212, 175, 55, 0.15)' 
-                          : 'rgba(255, 255, 255, 0.02)',
-                      transform: isSelected ? 'scale(1.04)' : 'none',
+                          ? 'rgba(197, 155, 39, 0.16)' 
+                          : 'rgba(212, 175, 55, 0.04)',
+                      transform: isSelected ? 'scale(1.03)' : 'none',
                       transformOrigin: `${parseFloat(district.labelX)}px ${parseFloat(district.labelY)}px`,
                       stroke: isSelected 
-                        ? '#d4af37' 
+                        ? 'var(--accent-gold)' 
                         : isHovered 
-                          ? '#faf7f2' 
+                          ? 'var(--accent-crimson)' 
                           : 'var(--map-boundary-stroke)',
                       strokeWidth: isSelected || isHovered ? 2.5 : 1.3,
-                      filter: isSelected || isHovered ? 'drop-shadow(0 0 8px rgba(212, 175, 55, 0.25))' : 'none'
+                      filter: isSelected || isHovered ? 'drop-shadow(0 0 10px rgba(197, 155, 39, 0.35))' : 'none'
                     }}
                     onMouseEnter={() => !zoomedDistrict && setHoveredDistrict(district.id)}
                     onMouseLeave={() => !zoomedDistrict && setHoveredDistrict(null)}
@@ -290,10 +290,10 @@ export default function HimachalSVGMap({ onDistrictSelect, selectedDistrict }) {
                       key={district.id + '-label'}
                       x={parseFloat(district.labelX) + dx}
                       y={parseFloat(district.labelY) + dy}
-                      className="fill-white font-bold tracking-wider pointer-events-none select-none text-[12px] md:text-[13px] font-sans"
+                      className="fill-[var(--text-primary)] font-bold tracking-wider pointer-events-none select-none text-[12px] md:text-[13px] font-sans"
                       style={{
                         paintOrder: 'stroke fill',
-                        stroke: '#1c1917',
+                        stroke: 'var(--bg-primary)',
                         strokeWidth: '3.5px',
                         strokeLinejoin: 'round',
                         letterSpacing: '0.08em'
@@ -336,7 +336,7 @@ export default function HimachalSVGMap({ onDistrictSelect, selectedDistrict }) {
                         r={isSelectedNode ? "6" : "4.5"} 
                         className="fill-[var(--accent-color)] transition-all duration-300 group-hover:fill-white"
                         style={{
-                           filter: 'drop-shadow(0 0 4px #d4af37)'
+                           filter: 'drop-shadow(0 0 5px var(--accent-gold))'
                         }}
                       />
                       {/* Minimalist Label */}

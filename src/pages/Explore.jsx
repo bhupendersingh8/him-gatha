@@ -82,37 +82,38 @@ export default function Explore() {
 
       <div className="max-w-7xl mx-auto">
         {/* Header Title Section */}
-        <div className="mb-10 text-center max-w-3xl mx-auto">
-          <span className="text-xs uppercase tracking-[0.25em] text-[var(--accent-color)] font-bold block mb-2">
-            {t('sacred_topography')}
-          </span>
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-[var(--text-primary)] mb-4">
+        <div className="mb-12 text-center max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[var(--accent-gold)]/10 border border-[var(--accent-gold)]/30 text-[var(--accent-gold)] text-[11px] font-bold uppercase tracking-widest mb-3 font-mono shadow-sm">
+            <Compass className="w-3.5 h-3.5 text-[var(--accent-gold)]" />
+            <span>Living Spatial Archive • Multi-Faceted Index</span>
+          </div>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-[var(--text-primary)] mb-4 tracking-tight">
             {t('himachal_atlas')} &amp; {t('deity_archive')}
           </h1>
-          <p className="text-sm md:text-base text-[var(--text-secondary)] leading-relaxed font-sans">
+          <p className="text-sm md:text-base text-[var(--text-secondary)] leading-relaxed font-sans max-w-2xl mx-auto">
             Explore 222 verified mountain deities, ancient temple coordinates, sacred oral genealogies, and architectural traditions across all 12 districts of Himachal Pradesh.
           </p>
         </div>
 
         {/* Faceted Filter Toolbar */}
-        <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-6 shadow-sm mb-10">
+        <div className="bg-[var(--bg-card)] border border-[var(--border-gold-subtle)] rounded-3xl p-6 md:p-8 shadow-luxury mb-12">
           <div className="flex flex-col gap-6">
             
             {/* Top Bar: Search Input & Action Controls */}
             <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
               <div className="relative w-full md:flex-1">
-                <Search className="absolute left-4 top-3.5 w-4 h-4 text-[var(--text-muted)]" />
+                <Search className="absolute left-4 top-3.5 w-4 h-4 text-[var(--accent-gold)]" />
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search by deity name, village, oral lore, or lineage..."
-                  className="w-full pl-11 pr-4 py-2.5 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-color)] text-[var(--text-primary)] placeholder-[var(--text-muted)] text-sm focus:border-[var(--accent-color)] focus:outline-none transition-colors"
+                  className="w-full pl-11 pr-4 py-3 rounded-2xl bg-[var(--bg-primary)] border border-[var(--border-color)] text-[var(--text-primary)] placeholder-[var(--text-muted)] text-sm focus:border-[var(--accent-gold)] focus:outline-none transition-all shadow-inner"
                 />
                 {searchQuery && (
                   <button
                     onClick={() => setSearchQuery('')}
-                    className="absolute right-3 top-2.5 text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)] px-1.5 py-0.5"
+                    className="absolute right-3.5 top-3 text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)] px-2 py-0.5 rounded cursor-pointer font-medium"
                   >
                     Clear
                   </button>
