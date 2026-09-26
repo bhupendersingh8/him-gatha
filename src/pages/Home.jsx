@@ -368,7 +368,7 @@ export default function Home() {
                         to="/calendar" 
                         className="text-xs text-[var(--accent-color)] hover:underline flex items-center gap-1 font-semibold"
                       >
-                        Details <ArrowRight className="w-3 h-3" />
+                        View Event Details <ArrowRight className="w-3 h-3" />
                       </Link>
                     </div>
                   </motion.div>
@@ -557,7 +557,7 @@ export default function Home() {
                   disabled={selectedMapDistrict === 'All'}
                   className="inline-flex items-center justify-center px-4 py-3.5 rounded-lg border border-[var(--border-color)] bg-[var(--bg-card)] text-[var(--text-secondary)] text-sm font-medium hover:text-[var(--text-primary)] hover:border-[var(--accent-gold)] transition-colors disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
                 >
-                  Reset Focus
+                  Reset Map
                 </button>
               </div>
             </div>

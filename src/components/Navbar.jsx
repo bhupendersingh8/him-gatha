@@ -47,7 +47,7 @@ export default function Navbar({ theme, toggleTheme, onSearch }) {
 
   const navLinks = [
     { to: '/', label: t('home'), end: true },
-    { to: '/explore', label: t('explore') || 'Explore' },
+    { to: '/explore', label: t('sacred_atlas') || 'Sacred Atlas' },
     { to: '/calendar', label: t('dev_melas') },
     { to: '/contribute', label: t('contribute') },
   ];
@@ -111,7 +111,7 @@ export default function Navbar({ theme, toggleTheme, onSearch }) {
             <input
               id="desktop-search-input"
               type="search"
-              placeholder="Search archive..."
+              placeholder={t('search_placeholder') || "Search deities, lore, or districts..."}
               value={searchVal}
               onChange={handleSearchChange}
               className="w-full h-9 px-3 pl-9 rounded-md border border-[var(--border-color)] bg-[var(--bg-card)] text-[var(--text-primary)] placeholder-[var(--text-muted)] text-xs font-sans focus:outline-none focus:border-[var(--accent-color)] focus:ring-1 focus:ring-[var(--accent-color)] transition-all"
@@ -196,7 +196,7 @@ export default function Navbar({ theme, toggleTheme, onSearch }) {
               <input
                 id="mobile-search-input"
                 type="search"
-                placeholder="Search deities, districts..."
+                placeholder={t('search_placeholder') || "Search deities, lore, or districts..."}
                 value={searchVal}
                 onChange={handleSearchChange}
                 className="w-full h-10 px-3 pl-10 rounded-md border border-[var(--border-color)] bg-[var(--bg-primary)] text-[var(--text-primary)] placeholder-[var(--text-muted)] text-sm font-sans focus:outline-none focus:border-[var(--accent-color)] focus:ring-1 focus:ring-[var(--accent-color)]"
