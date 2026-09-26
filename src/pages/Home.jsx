@@ -481,7 +481,7 @@ export default function Home() {
             </div>
             <Link
               to="/calendar"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--accent-color)] text-white text-sm font-semibold hover:opacity-95 transition-opacity self-start md:self-end shadow-md hover:shadow-luxury"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--accent-crimson)] text-white text-sm font-semibold hover:opacity-95 transition-opacity self-start md:self-end shadow-md hover:shadow-luxury"
             >
               <Calendar className="w-4 h-4" />
               <span>{t('view_all_festivals')}</span>
@@ -719,7 +719,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={() => navigate(selectedMapDistrict === 'All' ? '/explore' : `/explore?district=${encodeURIComponent(selectedMapDistrict)}`)}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-[var(--accent-color)] text-white text-sm font-semibold hover:opacity-95 transition-opacity shadow-md hover:shadow-luxury cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-[var(--accent-crimson)] text-white text-sm font-semibold hover:opacity-95 transition-opacity shadow-md hover:shadow-luxury cursor-pointer"
                 >
                   <Compass className="w-4 h-4" />
                   <span>Explore {selectedMapDistrict === 'All' ? 'Sacred Atlas' : `${selectedMapDistrict} Atlas`}</span>
@@ -769,7 +769,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               to="/contribute"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg bg-[var(--accent-color)] text-white text-sm font-semibold hover:opacity-95 transition-opacity shadow-md hover:shadow-luxury"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg bg-[var(--accent-crimson)] text-white text-sm font-semibold hover:opacity-95 transition-opacity shadow-md hover:shadow-luxury"
             >
               <ShieldCheck className="w-4 h-4" />
               <span>Submit Local Deity Lore</span>

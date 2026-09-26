@@ -158,7 +158,7 @@ export default function HeroSlideshow() {
             aria-selected={index === currentSlide}
             aria-label={index === currentSlide ? `Current slide: ${slide.title}` : `Go to slide ${index + 1}: ${slide.title}`}
             onClick={() => setCurrentSlide(index)}
-            className="flex items-center gap-1.5 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-gold)] rounded-full transition-all"
+            className="min-w-[28px] min-h-[28px] p-1.5 inline-flex items-center justify-center gap-1.5 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-gold)] rounded-full transition-all"
           >
             <span
               className={`h-2 rounded-full transition-all duration-500 ${

@@ -1,85 +1,115 @@
 ---
 name: jev
-description: Fast System One decision-making, classification, routing, and schema verification using Jev (TypeSafe AI) architecture patterns. Activate when designing agent decision loops, fast routing, intent classification, cultural taboo filtering, or sub-500ms structured decision policies.
+description: Fast System One decision-making, classification, routing, and schema verification using Jev (TypeSafe AI) architecture patterns. Automatically classifies user requests, selects the minimal development skill, enforces WCAG 2.2 AA accessibility quality gates, and prevents over-engineering.
 ---
 
-# Jev — System One AI Decision Architecture
+# Jev — Automatic Skill Router & System One Decision Architecture
 
 ## Overview
-**Jev** is a specialized "System One" AI architecture developed by **TypeSafe AI** (co-founded by former OpenAI researcher Diogo Almeida, released September 2026). 
-
-Unlike traditional Large Language Models (LLMs) that generate text autoregressively (token-by-token), Jev evaluates a state against a set of predefined typed questions **in parallel**, returning deterministic, probabilistic values with ultra-low latency (70–500ms).
+**Jev** is a high-speed "System One" decision engine. Within Antigravity, it serves as the **Automatic Skill Router**, instantly classifying user requests, evaluating task complexity, and selecting the optimal development-side skill(s) without requiring manual forms or explicit user prompting.
 
 ```
-Traditional LLM (System 2):
-Input ──────> [Autoregressive Token Generation] ──────> Text Stream (Slow, 1-10s)
-
-Jev System 1:
-Input ──────> [Parallel Typed Question Evaluator] ──────> Typed Schema { key: value, confidence } (Fast, 70-500ms)
+User Request
+     │
+     ▼
+[Jev System 1 Classifier] ──> Determine Primary Task Type & Complexity Level
+     │
+     ▼
+[Skill Match Engine]     ──> Match with Installed Development Skills
+     │
+     ├── UI / Frontend?        ──> Apply UI tooling + Mandatory WCAG 2.2 AA Quality Gate
+     ├── Over-Engineering?    ──> Apply Ponytail (YAGNI / minimal code)
+     ├── Complex Multi-File?  ──> Apply Graphify (AST symbol navigation)
+     └── Major Build/Refactor? ──> Apply Addy Agent Skills (Spec → Plan → Test → Ship)
+     │
+     ▼
+[Execution & Verification] ──> Smallest Correct Fix → npm test → npm run lint → npm run build
+     │
+     ▼
+[Report & STOP]           ──> Report Skills Used / Considered / Missing
 ```
 
 ---
 
-## Core Mental Model: System 1 vs. System 2
+## 1. Automatic Task Classification
 
-| Feature | Traditional LLM (System 2) | Jev Architecture (System 1) |
+Every incoming user prompt is instantly categorized into one primary task type:
+
+| Primary Task Type | Trigger Keywords / Intent | Primary Route |
 |---|---|---|
-| **Cognitive Mode** | Slow, deliberate, generative reasoning | Fast, automatic, intuitive decision-making |
-| **Output Type** | Natural language prose, markdown, code tokens | Typed enums, booleans, floats, probabilities |
-| **Execution** | Sequential token prediction | Parallel question evaluation |
-| **Latency** | 1,000ms – 10,000ms | 70ms – 500ms |
-| **Efficiency** | High compute & token cost | ~200x faster, ~400x cheaper |
-| **Primary Role** | Creative writing, explanation, deep planning | Fast routing, gating, classification, moderation |
+| **UI / Frontend** | "design", "make premium", "layout", "cards", "hero", "header", "modal", "css", "theme" | UI Development + WCAG Quality Gate |
+| **Accessibility** | "contrast", "keyboard nav", "focus", "aria", "screen reader", "touch target", "wcag" | WCAG 2.2 AA Rule + Minimal Code Fix |
+| **Refactoring** | "clean up", "restructure", "simplify", "reduce complexity", "modularize" | Ponytail (YAGNI) or Refactor skill |
+| **Multi-File Architecture** | "trace imports", "dependencies across files", "call hierarchy", "ast", "20+ files" | Graphify |
+| **Major Feature Build** | "new module", "new sub-system", "end-to-end flow", "architect feature" | Addy Agent Skills (SDLC) |
+| **Bug Fix** | "broken", "fix error", "crash", "undefined", "fails" | Diagnosing-bugs / Direct Fix |
+| **Performance** | "slow", "bundle size", "lag", "optimize" | Performance audit / Minimal native fixes |
+| **Testing / Verification** | "verify", "run tests", "audit", "lint", "check" | Native test runner / ESLint 9 |
 
 ---
 
-## When to Activate This Skill
+## 2. Complexity Threshold & Hierarchy
 
-Use the `jev` skill when:
-1. **Agent Decision Loops**: An autonomous agent needs to make high-frequency control-flow decisions without stalling on slow LLM token streaming.
-2. **Intent & Query Routing**: Instantly classifying user search intent into domain facets (e.g. *Deity Lore* vs. *Mela Calendar* vs. *Kinship Graph* vs. *Travel Navigation*).
-3. **Cultural Taboo & Niyam Filtering**: Checking community contributions or user queries for temple etiquette violations, prohibited items, or offensive language at sub-second speeds.
-4. **Schema & Verification Policy**: Validating submissions against strict types (e.g. valid Himachal coordinates, verified Kardar committees, image restrictions) before passing to heavy background processors.
-5. **Linguistic Anomaly Detection**: Rapidly catching misspellings and homophone blunders (e.g., distinguishing *Gur/गूर* from *gud/गुड़*).
+We choose the **lightest workflow capable of safely completing the task**:
+
+- **Level 1 — Simple (Direct Implementation)**:
+  - Text, spacing, single CSS fix, simple component patch.
+  - *Action:* Execute directly. No heavy workflow ceremonies.
+- **Level 2 — Moderate (Specialized Skill)**:
+  - New UI section, interactive component, responsive redesign, color adjustments.
+  - *Action:* Activate relevant UI skill + WCAG 2.2 AA accessibility check.
+- **Level 3 — Major (Structured Workflow)**:
+  - Multi-file feature, deep refactoring, architectural shift.
+  - *Action:* Activate Graphify (if symbol dependencies are intricate) or Addy Agent Skills (Spec $\to$ Plan $\to$ Test).
 
 ---
 
-## Application in HIM GATHA
+## 3. Mandatory Secondary Quality Gates
 
-### 1. Fast Intent & Routing Matrix
-When a user searches or interacts with the archive, Jev routes the query to the correct module in < 100ms:
+1. **Accessibility Override (WCAG 2.2 AA)**:
+   - If a task modifies colors, typography, buttons, links, navigation, forms, animations, SVGs, images, responsive layouts, or themes:
+   - **Automatically verify**: Contrast $\ge 4.5:1$ (Light & Dark), touch targets $\ge 24\times 24\text{px}$, visible focus rings, and valid ARIA.
+   - Do not wait for a separate audit request.
 
-```json
-{
-  "query": "when is Kamrunag sarahuli mela and can I carry leather belt?",
-  "evaluations": {
-    "target_district": "Mandi",
-    "primary_intent": "MELA_SCHEDULE",
-    "secondary_intent": "SACRED_ETIQUETTE_TABOOS",
-    "deity_entity": "Dev Kamrunag",
-    "requires_taboo_warning": true,
-    "taboo_category": "LEATHER_PROHIBITION"
-  }
-}
+2. **Ponytail Complexity Filter**:
+   - Before adding any new package, component layer, or abstraction, ask: *"Can modern CSS, standard runtime utilities, or existing functions solve this?"*
+   - Default to YAGNI and write the minimum viable lines of code.
+
+3. **Graphify Rule**:
+   - Activate only when analyzing relationships across $>5$ interconnected files.
+   - Never activate for single-file or isolated UI tweaks.
+
+---
+
+## 4. Strict Safety & Installation Guardrails
+
+- **Automatic USE** of already-installed skills is permitted.
+- **Automatic INSTALLATION** of new skills is **STRICTLY FORBIDDEN**.
+- If a required capability is missing:
+  1. STOP execution before downloading anything.
+  2. Explain what is missing and why existing skills are insufficient.
+  3. Provide the recommended tool and exact installation command.
+  4. Wait for explicit user approval.
+- **Development-Only**: Skills never leak into the React web bundle, Firebase, or runtime endpoints.
+- **Preserve Core HIM GATHA Guardrails**:
+  - 222 offline deities in `src/data/deities.json`.
+  - Zero paid/AI runtime APIs.
+  - Zero heavy 3D/animation bloat.
+  - Zero automatic production deployments.
+
+---
+
+## 5. Standardized Reporting Format
+
+At the conclusion of substantial tasks, summarize:
+
+```markdown
+### Skills Used
+- **<Skill Name>**: <Concrete reason why it materially improved this task>
+
+### Skills Considered but Not Used
+- **<Skill Name>**: <Reason why it was intentionally skipped to keep execution lightweight>
+
+### Missing Skills
+- None (or description of missing capability if approval was needed)
 ```
-
-### 2. Community Submission Gatekeeper
-Before writing to the pending submission store:
-- `is_himachal_bounds`: `true`
-- `has_authentic_lineage_terms`: `true`
-- `detected_governance_role`: `["Gur", "Kardar", "Pujari"]`
-- `potential_vandalism_score`: `0.02`
-
-### 3. Linguistic & Transliteration Normalization
-Detects and auto-flags homophone corruptions:
-- Input: `"gud of Hadimba"` → Flagged: `REPLACE_HOMOPHONE('gud', 'गूर', 'oracle')`
-
----
-
-## Best Practices for Agent Workflows
-
-1. **Pair System 1 (Jev) with System 2 (Claude / Gemini Pro)**:
-   - Let Jev handle the fast gatekeeping, filtering, and classification.
-   - Hand off to the full LLM only when creative narrative generation, archival synthesis, or code authoring is required.
-2. **Strict Typings**: Always formulate Jev questions as explicit TypeScript-like schemas (Booleans, Enums, Number ranges) rather than open strings.
-3. **Offline Fallback**: In offline-first PWA architectures like HIM GATHA, emulate Jev patterns locally using optimized regex/trie classifiers and WASM embeddings before network queries.
