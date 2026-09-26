@@ -62,35 +62,40 @@ export default function Navbar({ theme, toggleTheme, onSearch }) {
         Skip to main content
       </a>
 
-      <header className="sticky top-0 z-50 w-full bg-[var(--bg-primary)]/90 backdrop-blur-md border-b border-[var(--border-color)] transition-colors duration-200">
+      <header className="sticky top-0 z-50 w-full bg-[var(--bg-primary)]/85 backdrop-blur-md border-b border-[var(--border-color)] transition-colors duration-300">
         <nav aria-label="Main Navigation" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
           
           {/* Brand Logo */}
           <Link 
             to="/" 
-            className="flex items-center gap-2.5 py-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-color)] rounded-md group"
+            className="flex items-center gap-3 py-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-color)] rounded-md group"
             aria-label="HIM GATHA — Return to Home"
           >
             <span className="text-2xl md:text-3xl font-display font-bold tracking-tight text-[var(--text-primary)] group-hover:text-[var(--accent-color)] transition-colors">
               हिम गाथा
             </span>
-            <span className="hidden sm:inline-block text-[10px] uppercase tracking-[0.2em] text-[var(--accent-gold)] font-mono font-bold border-l border-[var(--border-color)] pl-2.5 py-0.5">
-              Archive
-            </span>
+            <div className="hidden sm:flex flex-col border-l border-[var(--border-gold-subtle)] pl-3 py-0.5">
+              <span className="text-[10px] uppercase tracking-[0.22em] text-[var(--accent-gold)] font-mono font-bold leading-none">
+                HIM GATHA
+              </span>
+              <span className="text-[8px] uppercase tracking-[0.16em] text-[var(--text-muted)] font-mono leading-tight mt-0.5">
+                Sacred Archive
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center gap-7 text-sm font-sans">
+          <div className="hidden md:flex items-center gap-8 text-xs font-label-caps tracking-[0.14em] uppercase">
             {navLinks.map((link) => (
               <NavLink
                 key={link.to}
                 to={link.to}
                 end={link.end}
                 className={({ isActive }) =>
-                  `py-1.5 transition-colors duration-150 border-b-2 font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-color)] rounded-t-sm ${
+                  `py-1.5 transition-all duration-200 border-b-2 font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-color)] rounded-t-sm ${
                     isActive
-                      ? 'text-[var(--accent-color)] font-semibold border-[var(--accent-color)]'
-                      : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] border-transparent'
+                      ? 'text-[var(--accent-color)] font-bold border-[var(--accent-color)]'
+                      : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] border-transparent hover:border-[var(--border-gold-subtle)]'
                   }`
                 }
               >
@@ -114,9 +119,9 @@ export default function Navbar({ theme, toggleTheme, onSearch }) {
               placeholder={t('search_placeholder') || "Search deities, lore, or districts..."}
               value={searchVal}
               onChange={handleSearchChange}
-              className="w-full h-9 px-3 pl-9 rounded-md border border-[var(--border-color)] bg-[var(--bg-card)] text-[var(--text-primary)] placeholder-[var(--text-muted)] text-xs font-sans focus:outline-none focus:border-[var(--accent-color)] focus:ring-1 focus:ring-[var(--accent-color)] transition-all"
+              className="w-full h-9 px-3 pl-9 rounded-full border border-[var(--border-color)] bg-[var(--bg-secondary)]/50 text-[var(--text-primary)] placeholder-[var(--text-muted)] text-xs font-sans focus:outline-none focus:border-[var(--accent-gold)] focus:ring-1 focus:ring-[var(--accent-gold)]/50 transition-all shadow-inner"
             />
-            <Search className="absolute left-2.5 top-2.5 w-3.5 h-3.5 text-[var(--text-muted)] pointer-events-none" aria-hidden="true" />
+            <Search className="absolute left-3 top-2.5 w-3.5 h-3.5 text-[var(--accent-gold)] pointer-events-none" aria-hidden="true" />
           </form>
 
           {/* Action Controls & Utilities */}
@@ -124,25 +129,25 @@ export default function Navbar({ theme, toggleTheme, onSearch }) {
             {/* Language Toggle Button */}
             <button
               onClick={toggleLanguage}
-              className="h-9 min-w-[44px] px-2.5 inline-flex items-center justify-center gap-1.5 rounded-md border border-[var(--border-color)] bg-[var(--bg-card)] text-xs font-semibold text-[var(--text-primary)] hover:border-[var(--accent-color)] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-color)]"
+              className="h-9 min-w-[44px] px-3 inline-flex items-center justify-center gap-1.5 rounded-full border border-[var(--border-gold-subtle)] bg-[var(--bg-card)] text-xs font-semibold text-[var(--text-primary)] hover:border-[var(--accent-gold)] hover:shadow-sm transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-color)] cursor-pointer"
               aria-label={`Switch language to ${lang === 'en' ? 'Hindi' : 'English'}`}
               title="Switch language"
             >
               <Languages className="h-3.5 w-3.5 text-[var(--accent-gold)]" aria-hidden="true" />
-              <span>{lang === 'en' ? 'EN' : 'हिं'}</span>
+              <span className="font-mono text-[11px] font-bold">{lang === 'en' ? 'EN' : 'हिं'}</span>
             </button>
 
             {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
-              className="h-9 w-9 min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-md border border-[var(--border-color)] bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--accent-color)] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-color)]"
+              className="h-9 w-9 min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-full border border-[var(--border-gold-subtle)] bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--accent-gold)] hover:shadow-sm transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-color)] cursor-pointer"
               aria-label={theme === 'dark' ? 'Switch to Light Theme' : 'Switch to Dark Theme'}
               title={theme === 'dark' ? 'Switch to Light Theme' : 'Switch to Dark Theme'}
             >
               {theme === 'dark' ? (
-                <Sun className="w-4 h-4 text-amber-500" aria-hidden="true" />
+                <Sun className="w-4 h-4 text-amber-400" aria-hidden="true" />
               ) : (
-                <Moon className="w-4 h-4" aria-hidden="true" />
+                <Moon className="w-4 h-4 text-stone-700" aria-hidden="true" />
               )}
             </button>
 

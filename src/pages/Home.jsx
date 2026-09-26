@@ -13,7 +13,9 @@ import {
   MapPin, 
   ChevronRight,
   Scroll,
-  Award
+  Award,
+  Layers,
+  Eye
 } from 'lucide-react';
 import HeroSlideshow from '../components/HeroSlideshow';
 import HimachalSVGMap from '../components/map/HimachalSVGMap';
@@ -199,6 +201,177 @@ export default function Home() {
               </span>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* 2.5 Curated Sacred Living Artifacts Bento Grid (Figma Design Implementation) */}
+      <section className="max-w-7xl mx-auto px-4 md:px-8 py-20">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6 border-b border-[var(--border-gold-subtle)] pb-6">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[var(--accent-gold)]/10 border border-[var(--accent-gold)]/30 text-[var(--accent-gold)] text-[11px] font-label-caps uppercase tracking-widest mb-3 shadow-sm">
+              <Sparkles className="w-3.5 h-3.5 text-[var(--accent-gold)] animate-pulse" />
+              <span>Sacred Living Artifacts • Archival Selections</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-serif font-bold text-[var(--text-primary)] tracking-tight">
+              Ephemeral Treasures of the Inner Himalayas
+            </h2>
+            <p className="text-sm md:text-base text-[var(--text-secondary)] max-w-2xl mt-3 leading-relaxed font-sans">
+              Rare ethnographic documentation of non-fungible oral traditions, sacred scroll iconography, and centuries-old deodar carpentry schematics.
+            </p>
+          </div>
+          <Link
+            to="/explore"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-[var(--border-gold-subtle)] bg-[var(--bg-card)] text-xs font-label-caps uppercase tracking-wider text-[var(--text-primary)] hover:border-[var(--accent-gold)] hover:text-[var(--accent-color)] shadow-sm hover:shadow-luxury transition-all self-start md:self-end group"
+          >
+            <span>View Archival Catalog</span>
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-[var(--accent-gold)]" />
+          </Link>
+        </div>
+
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          {/* Card 1: The 16th-Century Thangka of Spiti (Span 2) */}
+          <motion.div 
+            whileHover={{ y: -4 }}
+            transition={{ duration: 0.3 }}
+            className="md:col-span-2 relative h-96 rounded-3xl overflow-hidden group border border-[var(--border-color)] hover:border-[var(--accent-gold)]/70 shadow-luxury transition-all cursor-pointer"
+            onClick={() => navigate('/explore?tradition=Shakti')}
+          >
+            <img 
+              src="/assets/media__1785481976091.jpg" 
+              alt="The Thangka of Spiti" 
+              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-black/20" />
+            <div className="absolute top-5 left-5">
+              <span className="px-3.5 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-black/75 text-amber-300 backdrop-blur-md border border-amber-400/30 shadow-md">
+                Spiti &amp; Kinnaur • Monastic Textile
+              </span>
+            </div>
+            <div className="absolute bottom-6 left-6 right-6 text-white">
+              <span className="text-[11px] font-mono text-[var(--accent-gold)] uppercase tracking-widest font-semibold flex items-center gap-1.5 mb-1.5">
+                <Layers className="w-3 h-3 text-[var(--accent-gold)]" /> Mineral Pigment on Raw Silk • 16th Century
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white mb-2 leading-tight">
+                The Sacred Thangkas of Spiti
+              </h3>
+              <p className="text-xs sm:text-sm text-stone-200 font-sans max-w-xl line-clamp-2 leading-relaxed">
+                Illuminated Himalayan iconography preserved within high-altitude gompas, hand-ground from lapis lazuli, cinnabar, and beaten gold leaf.
+              </p>
+              <div className="mt-4 flex items-center gap-1.5 text-xs font-semibold text-amber-300 group-hover:text-amber-200 transition-colors">
+                <Eye className="w-3.5 h-3.5" />
+                <span className="font-label-caps uppercase tracking-wider">Inspect Sacred Details</span>
+                <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Card 2: Kath-Kuni Architectural Joinery (Span 1) */}
+          <motion.div 
+            whileHover={{ y: -4 }}
+            transition={{ duration: 0.3 }}
+            className="relative h-96 rounded-3xl overflow-hidden group border border-[var(--border-color)] hover:border-[var(--accent-gold)]/70 shadow-luxury transition-all cursor-pointer"
+            onClick={() => navigate('/explore?architecture=Kath-Kuni')}
+          >
+            <img 
+              src="/assets/media__1785481981665.jpg" 
+              alt="Kath-Kuni Joinery" 
+              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-black/20" />
+            <div className="absolute top-5 left-5">
+              <span className="px-3.5 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-black/75 text-amber-300 backdrop-blur-md border border-amber-400/30 shadow-md">
+                Kullu &amp; Shimla • Seismic Craft
+              </span>
+            </div>
+            <div className="absolute bottom-6 left-6 right-6 text-white">
+              <span className="text-[11px] font-mono text-[var(--accent-gold)] uppercase tracking-widest font-semibold flex items-center gap-1.5 mb-1.5">
+                <Landmark className="w-3 h-3 text-[var(--accent-gold)]" /> Vernacular Joinery
+              </span>
+              <h3 className="text-xl sm:text-2xl font-serif font-bold text-white mb-2 leading-tight">
+                Interlocking Kath-Kuni Joinery
+              </h3>
+              <p className="text-xs text-stone-200 font-sans line-clamp-2 leading-relaxed">
+                Alternate courses of dry stone and deodar cedar timber constructed without cement or iron nails to absorb Himalayan tectonic fault shifts.
+              </p>
+              <div className="mt-4 flex items-center gap-1.5 text-xs font-semibold text-amber-300 group-hover:text-amber-200 transition-colors">
+                <span className="font-label-caps uppercase tracking-wider">Explore Architecture</span>
+                <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Card 3: Oral Epics & Jagara Liturgies (Span 1) */}
+          <motion.div 
+            whileHover={{ y: -4 }}
+            transition={{ duration: 0.3 }}
+            className="relative h-80 rounded-3xl overflow-hidden group border border-[var(--border-color)] hover:border-[var(--accent-gold)]/70 shadow-luxury transition-all cursor-pointer"
+            onClick={() => navigate('/calendar')}
+          >
+            <img 
+              src="/assets/media__1785480627833.jpg" 
+              alt="Oral Epics Liturgy" 
+              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-black/20" />
+            <div className="absolute top-5 left-5">
+              <span className="px-3.5 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-black/75 text-amber-300 backdrop-blur-md border border-amber-400/30 shadow-md">
+                Mahasu Belt • Aural Archive
+              </span>
+            </div>
+            <div className="absolute bottom-6 left-6 right-6 text-white">
+              <span className="text-[11px] font-mono text-[var(--accent-gold)] uppercase tracking-widest font-semibold flex items-center gap-1.5 mb-1.5">
+                <Scroll className="w-3 h-3 text-[var(--accent-gold)]" /> Intangible Liturgy
+              </span>
+              <h3 className="text-xl font-serif font-bold text-white mb-1.5 leading-tight">
+                Oral Epics &amp; Jagara Chants
+              </h3>
+              <p className="text-xs text-stone-200 font-sans line-clamp-2 leading-relaxed">
+                All-night bardic invocations chanted by hereditary Bajantris and Gur mediums in sacred archaic Western Pahari dialects.
+              </p>
+              <div className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-amber-300 group-hover:text-amber-200 transition-colors">
+                <span className="font-label-caps uppercase tracking-wider">Discover Melas</span>
+                <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Card 4: Deoli & Kuhl Customary Water Charters (Span 2) */}
+          <motion.div 
+            whileHover={{ y: -4 }}
+            transition={{ duration: 0.3 }}
+            className="md:col-span-2 relative h-80 rounded-3xl overflow-hidden group border border-[var(--border-color)] hover:border-[var(--accent-gold)]/70 shadow-luxury transition-all cursor-pointer"
+            onClick={() => navigate('/explore')}
+          >
+            <img 
+              src="/assets/media__1785480599353.jpg" 
+              alt="Water Charters" 
+              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-black/20" />
+            <div className="absolute top-5 left-5">
+              <span className="px-3.5 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-black/75 text-amber-300 backdrop-blur-md border border-amber-400/30 shadow-md">
+                Kangra &amp; Mandi • Pahari Governance
+              </span>
+            </div>
+            <div className="absolute bottom-6 left-6 right-6 text-white">
+              <span className="text-[11px] font-mono text-[var(--accent-gold)] uppercase tracking-widest font-semibold flex items-center gap-1.5 mb-1.5">
+                <ShieldCheck className="w-3 h-3 text-[var(--accent-gold)]" /> Customary Devta Jurisprudence
+              </span>
+              <h3 className="text-2xl font-serif font-bold text-white mb-1.5 leading-tight">
+                Deoli &amp; Kuhl Water Charters
+              </h3>
+              <p className="text-xs sm:text-sm text-stone-200 font-sans max-w-xl line-clamp-2 leading-relaxed">
+                Ancient mountain water-sharing rights and sacred cedar grove protection bylaws adjudicated directly by the village Devta assembly.
+              </p>
+              <div className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-amber-300 group-hover:text-amber-200 transition-colors">
+                <span className="font-label-caps uppercase tracking-wider">Access Archival Records</span>
+                <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
+          </motion.div>
+
         </div>
       </section>
 

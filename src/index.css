@@ -1,11 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,600;0,700;1,400&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-display: 'Cinzel Decorative', 'Playfair Display', Georgia, serif;
+  --font-serif: 'Libre Caslon Text', 'Playfair Display', Georgia, serif;
+  --font-sans: 'Atkinson Hyperlegible Next', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Cinzel Decorative', 'Libre Caslon Text', 'Playfair Display', Georgia, serif;
   --font-garamond: 'Cormorant Garamond', Georgia, serif;
+  --font-caslon: 'Libre Caslon Text', Georgia, serif;
+  --font-atkinson: 'Atkinson Hyperlegible Next', sans-serif;
 
   /* Himalayan Archival HSL-based and semantic palette */
   --color-crimson-50: #fdf2f2;
@@ -65,27 +67,56 @@
   }
 }
 
-:root {
-  /* ── Himalayan Cultural Archive Light-First Theme ── */
-  --bg-primary: #F8F5F0;           /* Warm Sandstone Cream */
-  --bg-secondary: #F1EDE4;         /* Birch Bark / Aged Parchment */
-  --bg-card: #FFFFFF;              /* Clean warm card surface */
-  --text-primary: #1C1917;         /* Deep Stone Ink - WCAG AAA contrast */
-  --text-secondary: #57534E;       /* Pahari Slate - WCAG AA contrast > 4.5:1 */
-  --text-muted: #57534E;           /* Stone 600 - WCAG AA contrast > 4.5:1 on light backgrounds */
-  --border-color: rgba(60, 45, 30, 0.12); /* Subtle warm border */
-  --accent-color: #8E2800;         /* Temple Crimson / Vermillion - primary action */
-  --accent-gold: #855800;          /* Deep Burnished Gold / Ochre - WCAG AA contrast > 4.5:1 on light */
-  --accent-crimson: #8E2800;       /* Temple Crimson */
-  --glass-bg: rgba(248, 245, 240, 0.85);
-  --glass-border: rgba(60, 45, 30, 0.10);
+:root,
+.light-mode {
+  /* ── Himalayan Cultural Archive Light Theme (Warm Sandstone Ivory) ── */
+  --bg-primary: #FAF6F0;           /* Warm Sandstone Ivory */
+  --bg-secondary: #F3ECE2;         /* Soft Birch Parchment */
+  --bg-card: #FFFFFF;              /* Clean warm museum surface */
+  --bg-card-subtle: #FDFBF7;
+  --text-primary: #1C1917;         /* Deep Stone Ink - WCAG AAA */
+  --text-secondary: #57534E;       /* Pahari Slate - WCAG AA */
+  --text-muted: #78716C;
+  --border-color: rgba(60, 45, 30, 0.12);
+  --border-gold-subtle: rgba(184, 142, 56, 0.22);
+  --accent-color: #8E2800;         /* Temple Crimson */
+  --accent-gold: #B88E38;          /* Antique Champagne Gold */
+  --accent-gold-light: #D5AD5B;
+  --accent-crimson: #8E2800;
+  --glass-bg: rgba(250, 246, 240, 0.85);
+  --glass-border: rgba(184, 142, 56, 0.20);
   --shadow-premium: 0 4px 20px -4px rgba(60, 45, 30, 0.08), 0 1px 3px rgba(60, 45, 30, 0.04);
+  --shadow-luxury: 0 4px 20px -4px rgba(60, 45, 30, 0.08), 0 1px 3px rgba(60, 45, 30, 0.04);
+  --shadow-luxury-hover: 0 12px 32px -4px rgba(60, 45, 30, 0.12), 0 0 20px rgba(184, 142, 56, 0.12);
   --map-boundary-stroke: rgba(142, 40, 0, 0.35);
 
   --radius-sm: 0.5rem;   /* 8px  - Buttons, inputs, small tags */
   --radius-md: 1rem;     /* 16px - Cards, modal surfaces */
   --radius-lg: 1.5rem;   /* 24px - Large containers */
   --radius-pill: 9999px; /* Circular, pills, indicators */
+}
+
+.dark-mode {
+  /* ── Figma Temple Sanctuary Dark Theme (Near-Obsidian & Candlelight Gold) ── */
+  --bg-primary: #0B0A08;           /* Near-Obsidian Base (Figma exact: #0b0a08) */
+  --bg-secondary: #141311;         /* Deep Sanctuary Base (Figma exact: #141311) */
+  --bg-card: #1D1B19;              /* Level 1 Sub-container (Figma exact: #1d1b19) */
+  --bg-card-subtle: #211F1D;       /* Level 2 Surface container (Figma exact: #211f1d) */
+  --text-primary: #E7E2DD;         /* Warm Ivory Typography (Figma exact: #e7e2dd) */
+  --text-secondary: #D1C5B3;       /* Muted Parchment (Figma exact: #d1c5b3) */
+  --text-muted: #9A8F7F;           /* Outline slate (Figma exact: #9a8f7f) */
+  --border-color: rgba(154, 143, 127, 0.22); /* Figma outline-variant */
+  --border-gold-subtle: rgba(213, 173, 91, 0.25);
+  --accent-color: #D5AD5B;         /* Antique Gold (Figma primary: #d5ad5b) */
+  --accent-gold: #F3C873;          /* Warm Candlelight Gold (Figma: #f3c873) */
+  --accent-gold-light: #FFDEA2;
+  --accent-crimson: #C53030;
+  --glass-bg: rgba(20, 19, 17, 0.75);
+  --glass-border: rgba(213, 173, 91, 0.20);
+  --shadow-premium: 0 8px 30px -8px rgba(0, 0, 0, 0.7);
+  --shadow-luxury: 0 8px 30px -8px rgba(0, 0, 0, 0.7);
+  --shadow-luxury-hover: 0 16px 40px -8px rgba(0, 0, 0, 0.9), 0 0 25px rgba(213, 173, 91, 0.15);
+  --map-boundary-stroke: rgba(213, 173, 91, 0.40);
 }
 
 /* ── Canonical Button & Scale Primitives (Usability System) ── */
@@ -100,12 +131,17 @@
   color: #ffffff;
   font-size: 0.875rem;
   font-weight: 600;
-  transition: background-color 0.2s ease, opacity 0.2s ease;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px -2px rgba(142, 40, 0, 0.25);
+}
+.dark-mode .btn-primary {
+  color: #0b0a08;
+  background-color: var(--accent-gold);
+  box-shadow: 0 2px 12px -2px rgba(243, 200, 115, 0.3);
 }
 .btn-primary:hover {
-  background-color: var(--accent-crimson);
   opacity: 0.95;
+  transform: translateY(-1px);
 }
 
 .btn-secondary {
@@ -115,16 +151,17 @@
   gap: 0.5rem;
   padding: 0.625rem 1.25rem;
   border-radius: var(--radius-sm);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--border-gold-subtle);
   background-color: var(--bg-card);
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-size: 0.875rem;
   font-weight: 500;
-  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .btn-secondary:hover {
-  color: var(--text-primary);
-  border-color: var(--accent-color);
+  color: var(--accent-color);
+  border-color: var(--accent-gold);
+  transform: translateY(-1px);
 }
 
 .btn-pill {
@@ -138,47 +175,47 @@
   border: 1px solid var(--border-color);
   background-color: var(--bg-primary);
   color: var(--text-secondary);
-  transition: border-color 0.2s ease, color 0.2s ease;
+  transition: all 0.2s ease;
 }
 .btn-pill:hover {
-  border-color: var(--accent-color);
+  border-color: var(--accent-gold);
   color: var(--text-primary);
 }
 
-
-.light-mode {
-  --bg-primary: #F8F5F0;
-  --bg-secondary: #F1EDE4;
-  --bg-card: #FFFFFF;
-  --text-primary: #1C1917;
-  --text-secondary: #57534E;
-  --text-muted: #57534E;
-  --border-color: rgba(60, 45, 30, 0.12);
-  --accent-color: #8E2800;
-  --accent-gold: #855800;
-  --accent-crimson: #8E2800;
-  --glass-bg: rgba(248, 245, 240, 0.85);
-  --glass-border: rgba(60, 45, 30, 0.10);
-  --shadow-premium: 0 4px 20px -4px rgba(60, 45, 30, 0.08), 0 1px 3px rgba(60, 45, 30, 0.04);
-  --map-boundary-stroke: rgba(142, 40, 0, 0.35);
+/* ── Figma Temple Sanctuary Classes ── */
+.temple-gradient {
+  background: radial-gradient(circle at 50% -10%, rgba(213, 173, 91, 0.14) 0%, transparent 70%);
 }
 
-.dark-mode {
-  /* Slate Obsidian Theme — Retained for fallback */
-  --bg-primary: #0E0D0B;
-  --bg-secondary: #181613;
-  --bg-card: #221E19;
-  --text-primary: #F5F2EC;
-  --text-secondary: #D6D3D1;
-  --text-muted: #A8A29E;
-  --border-color: rgba(197, 155, 39, 0.18);
-  --accent-color: #E5B842;
-  --accent-gold: #E5B842;
-  --accent-crimson: #C53030;
-  --glass-bg: rgba(14, 13, 11, 0.85);
-  --glass-border: rgba(197, 155, 39, 0.15);
-  --shadow-premium: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
-  --map-boundary-stroke: rgba(197, 155, 39, 0.35);
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-gold-subtle);
+}
+
+.artifact-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.artifact-hover:hover {
+  box-shadow: 0 0 24px rgba(213, 173, 91, 0.15);
+  border-color: rgba(213, 173, 91, 0.45);
+}
+
+.font-label-caps {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.obsidian-overlay {
+  background: linear-gradient(to bottom, transparent, var(--bg-primary));
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(243, 200, 115, 0.35);
 }
 
 body {

@@ -85,39 +85,40 @@ export default function HeroSlideshow() {
           ></div>
           
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-black/65 to-black/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-black/70 to-black/45"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-transparent pointer-events-none"></div>
           
           {/* Content */}
           <div className="absolute inset-0 flex items-center justify-center text-center p-4">
-            <div className={`max-w-4xl transform transition-all duration-1000 delay-300 ${index === currentSlide ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            <div className={`max-w-4xl transform transition-all duration-1000 delay-200 ${index === currentSlide ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
               
               {/* Luxury Archive Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-[var(--accent-gold)]/40 text-[var(--accent-gold)] text-xs font-semibold tracking-[0.2em] uppercase mb-4 sm:mb-6 shadow-xl">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-[var(--accent-gold)]/40 text-[var(--accent-gold)] text-[11px] font-label-caps tracking-[0.22em] uppercase mb-4 sm:mb-6 shadow-2xl">
                 <Sparkles className="w-3.5 h-3.5 text-[var(--accent-gold)] animate-pulse" />
-                <span>Living Dev-Sanskriti Archive</span>
+                <span>Living Dev-Sanskriti Archive • Sanctuary Edition</span>
               </div>
 
-              <h1 className="text-3xl sm:text-5xl md:text-7xl font-serif text-white mb-4 sm:mb-6 drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)] tracking-tight font-bold leading-[1.1]">
+              <h1 className="text-3xl sm:text-5xl md:text-7xl font-serif text-white mb-4 sm:mb-6 drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] tracking-tight font-bold leading-[1.1] text-glow">
                 {slide.title}
               </h1>
               
-              <p className="text-base sm:text-lg md:text-xl text-slate-100 font-sans font-normal max-w-2xl mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-stone-200 font-sans font-normal max-w-2xl mx-auto drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)] leading-relaxed">
                 {slide.subtitle}
               </p>
               
               <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
                 <button 
                   onClick={() => navigate(slide.targetUrl || '/explore')}
-                  className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-[var(--accent-color)] via-[#9e2d03] to-[var(--accent-color)] text-white rounded-full font-semibold hover:shadow-[0_8px_25px_rgba(142,40,0,0.4)] transition-all duration-300 hover:scale-105 active:scale-95 text-sm sm:text-base cursor-pointer inline-flex items-center justify-center gap-2.5 shadow-lg border border-white/10"
+                  className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-[var(--accent-color)] via-[#9e2d03] to-[var(--accent-color)] text-white rounded-full font-semibold hover:shadow-[0_8px_30px_rgba(142,40,0,0.5)] transition-all duration-300 hover:scale-105 active:scale-95 text-sm sm:text-base cursor-pointer inline-flex items-center justify-center gap-2.5 shadow-xl border border-[var(--accent-gold)]/40"
                 >
                   <Compass className="w-4 h-4 sm:w-5 sm:h-5 text-amber-200" />
-                  <span>{slide.targetUrl?.startsWith('/deity') ? 'Read Archival Dossier' : 'Explore Sacred Atlas'}</span>
+                  <span className="font-label-caps tracking-wider uppercase text-xs sm:text-sm">{slide.targetUrl?.startsWith('/deity') ? 'Read Archival Dossier' : 'Explore Sacred Atlas'}</span>
                 </button>
                 <button 
                   onClick={() => navigate('/explore')}
-                  className="w-full sm:w-auto px-8 py-3.5 bg-black/45 hover:bg-black/70 backdrop-blur-md border border-white/30 hover:border-white/60 text-white rounded-full font-semibold transition-all duration-300 text-sm sm:text-base cursor-pointer shadow-md hover:scale-105 active:scale-95"
+                  className="w-full sm:w-auto px-8 py-3.5 bg-black/50 hover:bg-black/80 backdrop-blur-md border border-stone-400/40 hover:border-amber-300/60 text-white rounded-full font-semibold transition-all duration-300 text-sm sm:text-base cursor-pointer shadow-lg hover:scale-105 active:scale-95"
                 >
-                  Browse 222 Shrines
+                  <span className="font-label-caps tracking-wider uppercase text-xs sm:text-sm">Browse 222 Shrines</span>
                 </button>
               </div>
             </div>

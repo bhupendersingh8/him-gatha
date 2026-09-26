@@ -39,26 +39,26 @@ export default function DeityCard({ deity }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        whileHover={{ y: -4 }}
-        className="bg-[var(--bg-card)] border border-[var(--border-color)] group-hover:border-[var(--accent-gold)]/50 rounded-2xl overflow-hidden flex flex-col h-full shadow-sm group-hover:shadow-[0_16px_36px_-10px_rgba(142,40,0,0.12)] transition-all duration-300 relative"
+        whileHover={{ y: -5 }}
+        className="bg-[var(--bg-card)] border border-[var(--border-color)] group-hover:border-[var(--accent-gold)]/60 rounded-2xl overflow-hidden flex flex-col h-full shadow-sm hover:shadow-luxury-hover transition-all duration-300 relative"
       >
         {/* Top Accent Rim on Hover */}
         <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[var(--accent-color)] via-[var(--accent-gold)] to-[var(--accent-color)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20" />
 
         {/* Card Image Frame */}
-        <div className="h-48 bg-gradient-to-br from-[var(--bg-secondary)] via-[var(--bg-primary)] to-[var(--bg-card)] flex items-center justify-center relative overflow-hidden border-b border-[var(--border-color)]">
+        <div className="h-52 bg-gradient-to-br from-[var(--bg-secondary)] via-[var(--bg-primary)] to-[var(--bg-card)] flex items-center justify-center relative overflow-hidden border-b border-[var(--border-color)]">
           {imgSrc && !imgError ? (
             <img
               src={imgSrc}
               alt={deity.name}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
               loading="lazy"
               onError={() => setImgError(true)}
             />
           ) : (
             <div className="absolute inset-0 bg-gradient-to-br from-[var(--bg-secondary)] via-[var(--bg-primary)] to-[var(--bg-card)] flex flex-col items-center justify-center p-4">
               <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#8E2800_1px,transparent_1px)] [background-size:16px_16px]" />
-              <div className="w-16 h-16 rounded-full border border-[var(--accent-gold)]/40 flex items-center justify-center bg-[var(--accent-color)]/5 shadow-inner mb-1.5 group-hover:scale-110 group-hover:border-[var(--accent-gold)] transition-all duration-500">
+              <div className="w-16 h-16 rounded-full border border-[var(--accent-gold)]/40 flex items-center justify-center bg-[var(--accent-color)]/5 shadow-inner mb-2 group-hover:scale-110 group-hover:border-[var(--accent-gold)] transition-all duration-500">
                 <span className="text-[var(--accent-color)] font-serif italic text-3xl font-bold tracking-widest drop-shadow-sm">
                   {deity.name?.charAt(0) || 'ॐ'}
                 </span>
@@ -69,20 +69,20 @@ export default function DeityCard({ deity }) {
             </div>
           )}
 
-          {/* District & Catalog ID Floating Badges */}
+          {/* District & Architecture Floating Badges */}
           <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 flex-wrap">
-            <span className="px-2.5 py-0.5 rounded-full text-[10px] uppercase font-bold tracking-wider bg-black/65 backdrop-blur-md text-white border border-white/20 shadow-sm">
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase font-bold tracking-wider bg-black/75 backdrop-blur-md text-white border border-white/20 shadow-sm">
               {displayDistrict}
             </span>
             {architectureStyle && (
-              <span className="px-2 py-0.5 rounded-full text-[9px] font-mono font-semibold uppercase tracking-wider bg-amber-950/70 backdrop-blur-md text-amber-200 border border-amber-300/25 shadow-sm hidden sm:inline-block">
+              <span className="px-2 py-0.5 rounded-full text-[9px] font-mono font-semibold uppercase tracking-wider bg-amber-950/80 backdrop-blur-md text-amber-300 border border-amber-400/30 shadow-sm hidden sm:inline-block">
                 {architectureStyle}
               </span>
             )}
           </div>
 
           <div className="absolute top-3 right-3 z-10">
-            <span className="px-2 py-0.5 rounded text-[9px] font-mono uppercase tracking-wider bg-black/50 backdrop-blur-md text-stone-300 border border-white/10 font-bold">
+            <span className="px-2 py-0.5 rounded text-[9px] font-mono uppercase tracking-wider bg-black/60 backdrop-blur-md text-stone-300 border border-white/10 font-bold">
               #{deity.id}
             </span>
           </div>
@@ -111,9 +111,9 @@ export default function DeityCard({ deity }) {
               <span className="truncate">{deity.village || deity.region || displayDistrict}</span>
             </div>
             
-            <span className="inline-flex items-center gap-1 text-xs text-[var(--accent-color)] font-semibold tracking-wide group-hover:translate-x-0.5 transition-transform shrink-0 font-sans">
+            <span className="inline-flex items-center gap-1.5 text-xs text-[var(--accent-color)] font-label-caps uppercase tracking-wider font-semibold group-hover:translate-x-0.5 transition-transform shrink-0">
               <span>{t('view_lore') || 'Explore'}</span>
-              <ArrowRight className="w-3 h-3" />
+              <ArrowRight className="w-3 h-3 text-[var(--accent-gold)]" />
             </span>
           </div>
         </div>

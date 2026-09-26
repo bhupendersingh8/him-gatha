@@ -236,12 +236,98 @@ export default function DeityDetail() {
             </div>
 
             {deity.origin_story && (
-              <div className="p-6 bg-[var(--bg-secondary)]/70 rounded-2xl border-l-4 border-[var(--accent-gold)] shadow-sm">
+              <div className="p-6 bg-[var(--bg-secondary)]/70 rounded-2xl border-l-4 border-[var(--accent-gold)] shadow-sm mb-8">
                 <p className="text-[var(--text-secondary)] text-base md:text-lg leading-relaxed font-serif italic">
                   "{translateText(deity.origin_story, 'origin_story').substring(0, 180)}..."
                 </p>
               </div>
             )}
+
+            {/* 4-Point Bento Metadata Grid (Figma Design Implementation) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+              
+              {/* Point 1: Primary Guardian / गूर */}
+              <div className="p-4 rounded-2xl bg-[var(--bg-secondary)]/60 border border-[var(--border-color)] hover:border-[var(--accent-gold)]/50 transition-colors">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[var(--accent-gold)] font-bold block mb-1">
+                  गूर • Sacred Oracle
+                </span>
+                <p className="text-sm font-serif font-bold text-[var(--text-primary)] truncate">
+                  {deity.gur_name || 'Hereditary Medium'}
+                </p>
+                <span className="text-[10px] text-[var(--text-muted)] font-sans block mt-0.5">
+                  Spiritual Seer &amp; Conduit
+                </span>
+              </div>
+
+              {/* Point 2: Sanctuary Origin */}
+              <div className="p-4 rounded-2xl bg-[var(--bg-secondary)]/60 border border-[var(--border-color)] hover:border-[var(--accent-gold)]/50 transition-colors">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[var(--accent-color)] font-bold block mb-1">
+                  देव स्थल • Sanctuary Origin
+                </span>
+                <p className="text-sm font-serif font-bold text-[var(--text-primary)] truncate">
+                  {deity.village || deity.region || 'Sacred Valley'}
+                </p>
+                <span className="text-[10px] text-[var(--text-muted)] font-sans block mt-0.5">
+                  {translateText(deity.district, 'district')} District
+                </span>
+              </div>
+
+              {/* Point 3: Architecture / Era */}
+              <div className="p-4 rounded-2xl bg-[var(--bg-secondary)]/60 border border-[var(--border-color)] hover:border-[var(--accent-gold)]/50 transition-colors">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[var(--accent-gold)] font-bold block mb-1">
+                  वास्तु • Architecture
+                </span>
+                <p className="text-sm font-serif font-bold text-[var(--text-primary)] truncate">
+                  {deity.architecture || 'Kath-Kuni Timber'}
+                </p>
+                <span className="text-[10px] text-[var(--text-muted)] font-sans block mt-0.5">
+                  Indigenous Vernacular Style
+                </span>
+              </div>
+
+              {/* Point 4: Archival Status */}
+              <div className="p-4 rounded-2xl bg-[var(--bg-secondary)]/60 border border-[var(--border-color)] hover:border-[var(--accent-gold)]/50 transition-colors">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[var(--accent-color)] font-bold block mb-1">
+                  प्रमाण • Archival Status
+                </span>
+                <p className="text-sm font-serif font-bold text-[var(--text-primary)] truncate">
+                  Field-Verified Record
+                </p>
+                <span className="text-[10px] text-[var(--text-muted)] font-mono block mt-0.5">
+                  Census ID #{deity.id}
+                </span>
+              </div>
+
+            </div>
+
+            {/* Dev-Maryada (देव-मर्यादा) Sacred Etiquette & Taboo Box (Figma Design Implementation) */}
+            <div className="p-6 rounded-2xl bg-amber-950/15 border border-amber-500/30 text-[var(--text-primary)] shadow-sm">
+              <div className="flex items-center gap-2 mb-3 text-amber-500 font-mono text-xs uppercase tracking-widest font-bold">
+                <AlertCircle className="w-4 h-4 text-amber-500" />
+                <span>देव-मर्यादा • Dev-Maryada &amp; Sacred Sanctuary Etiquette</span>
+              </div>
+              <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed mb-4 font-sans">
+                This shrine operates under ancient Himachali customary sacred laws (देव-मर्यादा). Pilgrims, researchers, and visitors are strictly requested to observe traditional protocols:
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-sans">
+                <div className="flex items-start gap-2 text-[var(--text-secondary)]">
+                  <span className="text-amber-500 font-bold shrink-0">✦</span>
+                  <span><strong>Leather Articles Prohibited:</strong> Shoes, belts, and leather bags must be left outside the inner sanctum precinct.</span>
+                </div>
+                <div className="flex items-start gap-2 text-[var(--text-secondary)]">
+                  <span className="text-amber-500 font-bold shrink-0">✦</span>
+                  <span><strong>Sanctum Photography:</strong> Filming or photographing consecrated deities inside the Garbhagriha is strictly forbidden.</span>
+                </div>
+                <div className="flex items-start gap-2 text-[var(--text-secondary)]">
+                  <span className="text-amber-500 font-bold shrink-0">✦</span>
+                  <span><strong>Council Protocol:</strong> Follow guidance from hereditary Kardars and Pujaris during sacred gatherings and yatras.</span>
+                </div>
+                <div className="flex items-start gap-2 text-[var(--text-secondary)]">
+                  <span className="text-amber-500 font-bold shrink-0">✦</span>
+                  <span><strong>Sacred Grove Reverence:</strong> Sacred cedar trees (Deoli) surrounding the complex are protected by customary spiritual bylaws.</span>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Authentic Image Gallery if deity has multiple photos */}
