@@ -1,9 +1,24 @@
-export function registerServiceWorker() {
-  if (!('serviceWorker' in navigator) || !import.meta.env.PROD) return;
+import { registerSW } from 'virtual:pwa-register';
 
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js').catch((error) => {
-      console.warn('Service worker registration failed.', error);
+export function registerServiceWorker() {
+  if (typeof window === 'undefined' || !('serviceWorker' in navigator)) return;
+
+  try {
+    const updateSW = registerSW({
+      onNeedRefresh() {
+        // Auto-refresh when new archival cache is ready
+        updateSW(true);
+      },
+      onOfflineReady() {
+        console.info('HIM GATHA Cultural Archive is ready for 100% offline access.');
+      }
     });
-  });
+  } catch {
+    // Graceful fallback for non-bundled or test environments
+    if (import.meta.env?.PROD) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+      });
+    }
+  }
 }
