@@ -127,7 +127,7 @@ const translations = {
     living_governance_desc: "हिमाचल प्रदेश की पवित्र धरोहर सदियों पुरानी पारंपरिक संस्थाओं और काठ-कुणी स्थापत्य कला द्वारा संरक्षित है।",
     
     // Deity Details
-    sacred_lineages: "पवित्र वंशावली",
+    sacred_lineages: "देव-वंशावली",
     mythology_history: "पौराणिक कथा और इतिहास",
     traditional_admin: "पारंपरिक प्रशासन",
     pilgrimage_info: "तीर्थयात्रा सूचना",
@@ -141,7 +141,7 @@ const translations = {
     sacred_chant: "पवित्र भजन / ऑडियो",
     kathkuni_architecture: "पारंपरिक काठ-कुणी वास्तुकला",
     analyze_layout: "3D लेआउट का विश्लेषण करें",
-    current_gur: "वर्तमान गुर (देव-वाणी)",
+    current_gur: "वर्तमान गूर (देव-वाणी)",
     current_kardar: "वर्तमान कारदार (प्रबंधक)",
     record_unavailable: "रिकॉर्ड अनुपलब्ध",
     lineage_not_found: "इस इकाई के लिए संग्रह में कोई सीधा दर्ज वंशावली संबंध या प्रतिद्वंद्विता नहीं मिली।",

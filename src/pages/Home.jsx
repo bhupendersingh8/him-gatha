@@ -418,7 +418,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-serif font-bold text-[var(--text-primary)] mb-1 flex items-baseline gap-2">
                 <span>Gur</span>
-                <span className="text-sm font-serif text-[var(--accent-color)] font-normal">(गुड़ / Oracle)</span>
+                <span className="text-sm font-serif text-[var(--accent-color)] font-normal">(गूर / Oracle)</span>
               </h3>
               <p className="text-xs text-[var(--accent-color)] font-semibold tracking-wide uppercase mb-3">Divine Medium & Seer</p>
               <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
