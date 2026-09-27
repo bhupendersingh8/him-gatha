@@ -501,24 +501,12 @@ export default function DeityDetail() {
                   </p>
                 </div>
 
-                {deity.audio_url ? (
-                  <AudioNarrativePlayer
-                    src={deity.audio_url}
-                    title={t('sacred_chant')}
-                  />
-                ) : (
-                  <div className="p-6 md:p-8 rounded-2xl border border-dashed border-[var(--border-color)] bg-[var(--bg-secondary)]/50">
-                    <h2 className="text-xl font-serif text-[var(--text-primary)] mb-3 flex items-center gap-2 font-bold">
-                      <span className="w-8 h-8 rounded-full bg-slate-500/10 flex items-center justify-center text-slate-500">
-                        <AlertCircle className="w-4 h-4" />
-                      </span>
-                      <span>{t('sacred_chant')}</span>
-                    </h2>
-                    <p className="text-sm text-[var(--text-secondary)] font-sans">
-                      No custom audio record is currently attached to this archive profile. Traditional audio narratives and scriptural mantras will be updated by authorized temple administrators.
-                    </p>
-                  </div>
-                )}
+                <AudioNarrativePlayer
+                  src={deity.audio_url}
+                  title={`${translateText(deity.name, 'name')} — ${t('sacred_chant') || 'Dev-Katha Lore'}`}
+                  narrativeText={`${translateText(deity.name, 'name')}. ${translateText(deity.district, 'district')} के प्रमुख देव स्थान। ${translateText(deity.description, 'description')}`}
+                  lang={lang}
+                />
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="p-7 bg-[var(--bg-secondary)]/70 rounded-2xl border border-[var(--border-gold-subtle)] shadow-sm hover:border-[var(--accent-gold)]/50 transition-colors">

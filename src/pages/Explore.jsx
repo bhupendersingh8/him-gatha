@@ -6,13 +6,20 @@ import {
   Search, 
   RotateCcw, 
   Layers, 
-  Landmark
+  Landmark,
+  Mic,
+  MicOff
 } from 'lucide-react';
 import HimachalSVGMap from '../components/map/HimachalSVGMap';
 import DeityGrid from '../components/DeityGrid';
 import SEOHead from '../components/SEOHead';
 import { useTranslation } from '../context/LanguageContext';
 import deitiesData from '../data/deities.json';
+import { 
+  isVoiceSearchSupported, 
+  startVoiceSearch, 
+  stopVoiceSearch 
+} from '../services/aiKoshBhashini';
 
 const TRADITIONS = [
   { id: 'All', label: 'All Traditions', label_hi: 'सभी परंपराएँ' },
@@ -46,6 +53,30 @@ export default function Explore() {
   const [selectedArchitecture, setSelectedArchitecture] = useState(initialArchitecture);
   const [searchQuery, setSearchQuery] = useState(initialSearch);
   const [showMap, setShowMap] = useState(true);
+  const [isListening, setIsListening] = useState(false);
+  const [voiceSupported] = useState(() => isVoiceSearchSupported());
+
+  const handleVoiceSearchToggle = () => {
+    if (isListening) {
+      stopVoiceSearch();
+      setIsListening(false);
+    } else {
+      setIsListening(true);
+      startVoiceSearch({
+        lang,
+        onResult: (transcript) => {
+          if (transcript) setSearchQuery(transcript);
+          setIsListening(false);
+        },
+        onError: () => {
+          setIsListening(false);
+        },
+        onEnd: () => {
+          setIsListening(false);
+        }
+      });
+    }
+  };
 
   // Sync state to URL search parameters without cluttering history
   useEffect(() => {
@@ -107,17 +138,36 @@ export default function Explore() {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search by deity name, village, oral lore, or lineage..."
-                  className="w-full pl-11 pr-4 py-3 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-color)] text-[var(--text-primary)] placeholder-[var(--text-muted)] text-sm focus:border-[var(--accent-gold)] focus:outline-none transition-all shadow-inner"
+                  placeholder={isListening ? "Listening in Hindi/Pahari... speak now" : "Search by deity name, village, oral lore, or lineage..."}
+                  className={`w-full pl-11 pr-24 py-3 rounded-xl bg-[var(--bg-primary)] border text-[var(--text-primary)] placeholder-[var(--text-muted)] text-sm focus:outline-none transition-all shadow-inner ${
+                    isListening ? 'border-red-500 ring-2 ring-red-500/30' : 'border-[var(--border-color)] focus:border-[var(--accent-gold)]'
+                  }`}
                 />
-                {searchQuery && (
-                  <button
-                    onClick={() => setSearchQuery('')}
-                    className="absolute right-3.5 top-3 text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)] px-2 py-0.5 rounded cursor-pointer font-medium"
-                  >
-                    Clear
-                  </button>
-                )}
+                <div className="absolute right-3 top-2.5 flex items-center gap-1.5">
+                  {voiceSupported && (
+                    <button
+                      type="button"
+                      onClick={handleVoiceSearchToggle}
+                      className={`p-1.5 rounded-lg text-xs transition-all flex items-center justify-center cursor-pointer ${
+                        isListening 
+                          ? 'bg-red-500 text-white animate-pulse' 
+                          : 'text-[var(--accent-gold)] hover:bg-[var(--accent-gold)]/15'
+                      }`}
+                      title={isListening ? 'Listening... Click to stop' : 'Voice Search • Dev-Vaani (AI Kosh / Bhashini)'}
+                      aria-label="Voice Search with Dev-Vaani"
+                    >
+                      {isListening ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
+                    </button>
+                  )}
+                  {searchQuery && (
+                    <button
+                      onClick={() => setSearchQuery('')}
+                      className="text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)] px-1.5 py-0.5 rounded cursor-pointer font-medium"
+                    >
+                      Clear
+                    </button>
+                  )}
+                </div>
               </div>
 
               <div className="flex items-center gap-3 w-full md:w-auto justify-end">
