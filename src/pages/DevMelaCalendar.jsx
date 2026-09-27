@@ -8,7 +8,8 @@ import {
   CalendarCheck2, 
   History, 
   HelpCircle,
-  Filter
+  Filter,
+  ArrowRight
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import eventsData from '../data/events.json';
@@ -19,6 +20,8 @@ import { groupAndSortEvents, formatEventDate } from '../utils/eventLifecycle';
 export default function DevMelaCalendar() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDistrict, setSelectedDistrict] = useState('All');
+  const [activeTab, setActiveTab] = useState('all'); // 'all' | 'now' | 'upcoming' | 'seasonal' | 'tba' | 'past'
+  const [pastVisibleCount, setPastVisibleCount] = useState(3);
   const { t } = useTranslation();
 
   // Extract unique districts from events data
@@ -46,8 +49,6 @@ export default function DevMelaCalendar() {
     });
   }, [searchTerm, selectedDistrict]);
 
-  const [activeTab, setActiveTab] = useState('all'); // 'all' | 'now' | 'upcoming' | 'seasonal' | 'tba' | 'past'
-
   // Partition events through pure IST lifecycle engine
   const { happeningNow, upcoming, laterThisSeason, past, tba } = useMemo(() => {
     return groupAndSortEvents(filteredEvents, new Date());
@@ -64,19 +65,19 @@ export default function DevMelaCalendar() {
     return (
       <article 
         key={event.deityId + event.title}
-        className={`archival-plate p-6 transition-all duration-300 flex flex-col justify-between relative group ${
+        className={`archival-plate p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between relative group ${
           isNow 
             ? 'border-emerald-600/50 shadow-emerald-900/10 ring-1 ring-emerald-600/30' 
             : isUpcoming 
               ? 'border-[var(--border-gold-subtle)] hover:border-[var(--accent-gold)] shadow-luxury' 
               : isPast
-                ? 'border-[var(--border-color)]/70 opacity-85'
+                ? 'border-[var(--border-color)]/70 opacity-90'
                 : 'border-[var(--border-color)]'
         }`}
       >
         {/* Top Gold Hairline Indicator for Upcoming & Now */}
         {(isNow || isUpcoming) && (
-          <div className={`absolute top-0 left-0 right-0 h-0.5 rounded-t-md ${
+          <div className={`absolute top-0 left-0 right-0 h-0.5 rounded-t-2xl ${
             isNow ? 'bg-emerald-600' : 'bg-gradient-to-r from-[var(--accent-color)] via-[var(--accent-gold)] to-[var(--accent-color)]'
           }`} />
         )}
@@ -84,7 +85,7 @@ export default function DevMelaCalendar() {
         <div>
           {/* Header pill strip */}
           <div className="flex items-center justify-between gap-2 mb-3">
-            <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider ${
+            <span className={`px-2.5 py-0.5 rounded-full text-xs font-semibold ${
               isNow 
                 ? 'bg-emerald-600/15 text-emerald-700 dark:text-emerald-400 border border-emerald-600/30 animate-pulse' 
                 : isUpcoming 
@@ -108,7 +109,7 @@ export default function DevMelaCalendar() {
           </h3>
 
           <p className="text-xs text-[var(--accent-color)] font-medium flex items-center gap-1.5 mb-3 font-sans">
-            <MapPin className="w-3.5 h-3.5 shrink-0" />
+            <MapPin className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
             <span>{event.location}</span>
           </p>
 
@@ -117,17 +118,18 @@ export default function DevMelaCalendar() {
           </p>
         </div>
 
-        {/* Card Footer Actions */}
-        <div className="pt-4 border-t border-[var(--border-color)] flex items-center justify-between text-xs">
+        {/* Card Footer Actions - Styled with Clear Visual Affordance */}
+        <div className="pt-4 border-t border-[var(--border-color)] flex items-center justify-between gap-2 text-xs">
           {event.deityId ? (
             <Link 
               to={`/deity/${event.deityId}`}
-              className="inline-flex items-center gap-1.5 font-serif font-bold text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors underline underline-offset-4 decoration-[var(--border-gold-subtle)] hover:decoration-[var(--accent-color)]"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-[var(--border-gold-subtle)] bg-[var(--bg-secondary)]/60 text-[var(--text-primary)] hover:border-[var(--accent-gold)] hover:text-[var(--accent-color)] font-semibold transition-all shadow-xs"
             >
               <span>{t('view_associated_deity')}</span>
+              <ArrowRight className="w-3 h-3 text-[var(--accent-gold)]" aria-hidden="true" />
             </Link>
           ) : (
-            <span className="text-[var(--text-muted)] text-[11px] font-mono">Dev-Sanskriti Sabha</span>
+            <span className="text-[var(--text-muted)] text-xs font-mono">Dev-Sanskriti Sabha</span>
           )}
 
           {event.map && (
@@ -135,10 +137,11 @@ export default function DevMelaCalendar() {
               href={event.map}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-[var(--accent-color)] font-medium hover:text-[var(--accent-crimson)] transition-colors text-xs font-mono"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[var(--border-color)] bg-[var(--bg-card)] hover:border-[var(--accent-gold)] text-[var(--accent-color)] font-medium transition-all shadow-xs"
             >
+              <MapPin className="w-3 h-3" aria-hidden="true" />
               <span>Pilgrim Map</span>
-              <ExternalLink className="w-3 h-3" />
+              <ExternalLink className="w-3 h-3 opacity-70" aria-hidden="true" />
             </a>
           )}
         </div>
@@ -155,31 +158,31 @@ export default function DevMelaCalendar() {
 
       <div className="max-w-6xl mx-auto">
         {/* Title Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[var(--accent-gold)]/10 border border-[var(--accent-gold)]/30 text-[var(--accent-gold)] text-[11px] font-bold uppercase tracking-widest mb-3 font-mono shadow-sm">
-            <Calendar className="w-3.5 h-3.5 text-[var(--accent-gold)]" />
+        <div className="text-center max-w-3xl mx-auto mb-8">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[var(--accent-gold)]/10 border border-[var(--accent-gold)]/30 text-[var(--accent-gold)] text-xs font-semibold tracking-wider mb-3 font-mono shadow-sm">
+            <Calendar className="w-3.5 h-3.5 text-[var(--accent-gold)]" aria-hidden="true" />
             <span>Living Panchang &amp; Dev-Mela Chronicle</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-[var(--text-primary)] mb-4 tracking-tight">
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-[var(--text-primary)] mb-3 tracking-tight">
             {t('calendar_title')}
           </h1>
-          <p className="text-sm md:text-base text-[var(--text-secondary)] leading-relaxed font-sans max-w-2xl mx-auto">
+          <p className="text-sm md:text-base text-[var(--text-secondary)] leading-relaxed font-sans max-w-2xl mx-auto mb-4">
             {t('calendar_desc')}
           </p>
 
           {/* Cultural Trust Banner */}
-          <div className="mt-4 inline-flex items-center gap-2 text-xs text-[var(--text-muted)] bg-[var(--bg-secondary)]/80 px-4 py-1.5 rounded-full border border-[var(--border-color)]">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <div className="inline-flex items-center gap-2 text-xs text-[var(--text-muted)] bg-[var(--bg-secondary)]/80 px-4 py-1.5 rounded-full border border-[var(--border-color)]">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />
             <span>Pure IST Lifecycle Engine • Traditional Tithis Verified Directly with Temple Kardars</span>
           </div>
         </div>
 
         {/* Status Tab Navigation */}
-        <div className="flex items-center justify-center gap-2 overflow-x-auto pb-3 mb-8">
+        <div className="flex items-center justify-center gap-2 overflow-x-auto pb-2 mb-5">
           {[
             { id: 'all', label: 'All Festivals', count: totalMatching },
-            { id: 'now', label: 'Happening Now', count: happeningNow.length, highlight: 'emerald' },
-            { id: 'upcoming', label: 'Confirmed Upcoming', count: upcoming.length, highlight: 'amber' },
+            { id: 'now', label: 'Happening Now', count: happeningNow.length },
+            { id: 'upcoming', label: 'Confirmed Upcoming', count: upcoming.length },
             { id: 'seasonal', label: 'Seasonal Windows', count: laterThisSeason.length },
             { id: 'tba', label: 'Tithi Awaited', count: tba.length },
             { id: 'past', label: 'Concluded', count: past.length }
@@ -194,7 +197,7 @@ export default function DevMelaCalendar() {
               }`}
             >
               <span>{tab.label}</span>
-              <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-mono ${
+              <span className={`px-1.5 py-0.5 rounded-full text-xs font-mono ${
                 activeTab === tab.id ? 'bg-white/20 text-white' : 'bg-[var(--bg-secondary)] text-[var(--text-muted)]'
               }`}>
                 {tab.count}
@@ -204,43 +207,44 @@ export default function DevMelaCalendar() {
         </div>
 
         {/* Filter Controls Bar */}
-        <div className="bg-[var(--bg-card)] border border-[var(--border-gold-subtle)] rounded-3xl p-6 shadow-luxury mb-12">
+        <div className="bg-[var(--bg-card)] border border-[var(--border-gold-subtle)] rounded-2xl p-5 md:p-6 shadow-luxury mb-12">
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
             <div className="relative w-full md:flex-1">
-              <Search className="absolute left-4 top-3.5 w-4 h-4 text-[var(--text-muted)]" />
+              <Search className="absolute left-4 top-3.5 w-4 h-4 text-[var(--text-muted)]" aria-hidden="true" />
               <input
                 type="text"
                 placeholder={t('search_festivals')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-11 pr-4 py-2.5 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-color)] text-[var(--text-primary)] placeholder-[var(--text-muted)] text-sm focus:border-[var(--accent-color)] focus:outline-none transition-colors"
+                className="w-full h-11 pl-11 pr-4 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-color)] text-[var(--text-primary)] placeholder-[var(--text-muted)] text-sm focus:border-[var(--accent-color)] focus:ring-1 focus:ring-[var(--accent-color)] focus:outline-none transition-all shadow-inner"
               />
             </div>
 
-            <div className="flex items-center gap-2 w-full md:w-auto">
-              <Filter className="w-4 h-4 text-[var(--text-muted)] shrink-0" />
-              <div className="flex gap-1.5 overflow-x-auto pb-1 max-w-full">
+            <div className="flex items-center gap-2 w-full md:w-auto relative">
+              <Filter className="w-4 h-4 text-[var(--text-muted)] shrink-0" aria-hidden="true" />
+              <div className="flex gap-1.5 overflow-x-auto pb-1 scroll-smooth max-w-full pr-6">
                 {districts.map(d => (
                   <button
                     key={d}
                     onClick={() => setSelectedDistrict(d)}
-                    className={`px-3 py-1.5 rounded-lg text-xs whitespace-nowrap transition-all border cursor-pointer ${
+                    className={`px-3.5 py-1.5 rounded-full text-xs whitespace-nowrap transition-all border cursor-pointer ${
                       selectedDistrict === d
                         ? 'bg-[var(--accent-color)] text-white border-[var(--accent-color)] font-semibold shadow-sm'
-                        : 'bg-[var(--bg-primary)] text-[var(--text-secondary)] border-[var(--border-color)] hover:bg-[var(--bg-secondary)]'
+                        : 'bg-[var(--bg-primary)] text-[var(--text-secondary)] border-[var(--border-color)] hover:border-[var(--accent-gold)]/60'
                     }`}
                   >
-                    {d}
+                    {d === 'All' ? 'All Districts' : d}
                   </button>
                 ))}
               </div>
+              <div className="pointer-events-none absolute right-0 top-0 bottom-1 w-8 bg-gradient-to-l from-[var(--bg-card)] to-transparent" aria-hidden="true" />
             </div>
           </div>
         </div>
 
         {totalMatching === 0 ? (
-          <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-3xl p-16 text-center max-w-lg mx-auto shadow-sm">
-            <Calendar className="w-10 h-10 text-[var(--text-muted)] mx-auto mb-4" />
+          <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-16 text-center max-w-lg mx-auto shadow-sm">
+            <Calendar className="w-10 h-10 text-[var(--text-muted)] mx-auto mb-4" aria-hidden="true" />
             <h3 className="text-xl font-serif font-bold text-[var(--text-primary)] mb-2">
               {t('no_events')}
             </h3>
@@ -249,7 +253,7 @@ export default function DevMelaCalendar() {
             </p>
             <button
               onClick={() => { setSearchTerm(''); setSelectedDistrict('All'); }}
-              className="px-5 py-2 rounded-lg bg-[var(--accent-color)] text-white text-xs font-semibold hover:opacity-95 transition-opacity"
+              className="px-5 py-2.5 rounded-full bg-[var(--accent-color)] text-white text-xs font-semibold hover:opacity-95 transition-opacity cursor-pointer shadow-sm"
             >
               Reset Filters
             </button>
@@ -261,7 +265,7 @@ export default function DevMelaCalendar() {
             {(activeTab === 'all' || activeTab === 'now') && happeningNow.length > 0 && (
               <section aria-label="Festivals Happening Now">
                 <div className="flex items-center gap-3 mb-6 pb-3 border-b border-emerald-600/30">
-                  <div className="w-3 h-3 rounded-full bg-emerald-600 animate-ping"></div>
+                  <div className="w-3 h-3 rounded-full bg-emerald-600 animate-ping" aria-hidden="true" />
                   <h2 className="text-2xl font-serif font-bold text-emerald-700 dark:text-emerald-400">
                     Happening Now in Himachal
                   </h2>
@@ -279,7 +283,7 @@ export default function DevMelaCalendar() {
             {(activeTab === 'all' || activeTab === 'upcoming') && upcoming.length > 0 && (
               <section aria-label="Upcoming Festivals">
                 <div className="flex items-center gap-3 mb-6 pb-3 border-b border-[var(--border-gold-subtle)]">
-                  <CalendarCheck2 className="w-5 h-5 text-[var(--accent-color)]" />
+                  <CalendarCheck2 className="w-5 h-5 text-[var(--accent-color)]" aria-hidden="true" />
                   <h2 className="text-2xl font-serif font-bold text-[var(--text-primary)]">
                     Upcoming Confirmed Festivals
                   </h2>
@@ -297,7 +301,7 @@ export default function DevMelaCalendar() {
             {(activeTab === 'all' || activeTab === 'seasonal') && laterThisSeason.length > 0 && (
               <section aria-label="Later This Season">
                 <div className="flex items-center gap-3 mb-6 pb-3 border-b border-[var(--border-gold-subtle)]">
-                  <Clock className="w-5 h-5 text-[var(--accent-gold)]" />
+                  <Clock className="w-5 h-5 text-[var(--accent-gold)]" aria-hidden="true" />
                   <h2 className="text-2xl font-serif font-bold text-[var(--text-primary)]">
                     Later This Season (Month-Level Accuracy)
                   </h2>
@@ -315,7 +319,7 @@ export default function DevMelaCalendar() {
             {(activeTab === 'all' || activeTab === 'tba') && tba.length > 0 && (
               <section aria-label="Dates To Be Announced">
                 <div className="flex items-center gap-3 mb-6 pb-3 border-b border-[var(--border-color)]">
-                  <HelpCircle className="w-5 h-5 text-[var(--text-muted)]" />
+                  <HelpCircle className="w-5 h-5 text-[var(--text-muted)]" aria-hidden="true" />
                   <h2 className="text-2xl font-serif font-bold text-[var(--text-primary)]">
                     Dates Under Verification (TBA)
                   </h2>
@@ -333,7 +337,7 @@ export default function DevMelaCalendar() {
             {(activeTab === 'all' || activeTab === 'past') && past.length > 0 && (
               <section aria-label="Past Celebrations">
                 <div className="flex items-center gap-3 mb-6 pb-3 border-b border-[var(--border-color)]">
-                  <History className="w-5 h-5 text-[var(--text-muted)]" />
+                  <History className="w-5 h-5 text-[var(--text-muted)]" aria-hidden="true" />
                   <h2 className="text-2xl font-serif font-bold text-[var(--text-muted)]">
                     Concluded Fairs &amp; Celebrations
                   </h2>
@@ -342,8 +346,19 @@ export default function DevMelaCalendar() {
                   </span>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {past.map(e => renderEventCard(e, 'past'))}
+                  {past.slice(0, activeTab === 'past' ? past.length : pastVisibleCount).map(e => renderEventCard(e, 'past'))}
                 </div>
+                {activeTab !== 'past' && past.length > pastVisibleCount && (
+                  <div className="mt-8 flex justify-center">
+                    <button
+                      type="button"
+                      onClick={() => setPastVisibleCount(past.length)}
+                      className="px-5 py-2.5 rounded-full text-xs font-semibold border border-[var(--border-color)] bg-[var(--bg-card)] text-[var(--text-secondary)] hover:border-[var(--accent-gold)] hover:text-[var(--text-primary)] transition-all shadow-xs cursor-pointer"
+                    >
+                      Reveal Concluded Celebrations ({past.length - pastVisibleCount} More)
+                    </button>
+                  </div>
+                )}
               </section>
             )}
 
@@ -355,8 +370,8 @@ export default function DevMelaCalendar() {
               (activeTab === 'tba' && tba.length === 0) ||
               (activeTab === 'past' && past.length === 0)
             ) && (
-              <div className="archival-plate p-12 text-center max-w-md mx-auto">
-                <Calendar className="w-8 h-8 text-[var(--accent-gold)] mx-auto mb-3 opacity-60" />
+              <div className="archival-plate p-12 text-center max-w-md mx-auto rounded-2xl">
+                <Calendar className="w-8 h-8 text-[var(--accent-gold)] mx-auto mb-3 opacity-60" aria-hidden="true" />
                 <h4 className="font-serif text-lg font-bold text-[var(--text-primary)] mb-1">
                   No Celebrations in this Section
                 </h4>
@@ -366,7 +381,7 @@ export default function DevMelaCalendar() {
                 <button
                   type="button"
                   onClick={() => setActiveTab('all')}
-                  className="btn-primary text-xs cursor-pointer"
+                  className="px-5 py-2.5 rounded-full bg-[var(--accent-color)] text-white text-xs font-semibold hover:opacity-95 transition-opacity cursor-pointer shadow-sm"
                 >
                   View All Celebrations
                 </button>
