@@ -8,7 +8,10 @@ export default function CitationModal({ isOpen, onClose, deity }) {
 
   const year = new Date().getFullYear();
   const dateStr = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-  const pageUrl = window.location.href;
+  const isLocal = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+  const pageUrl = isLocal 
+    ? `https://himgatha.in/deity/${deity.slug || deity.id}` 
+    : window.location.href;
 
   const citations = {
     iks: `HIM GATHA Digital Heritage Repository. (${year}). Record: ${deity.name} [Dev-Sanskriti Cultural Archive]. ${deity.district} District, Himachal Pradesh. Retrieved ${dateStr}, from ${pageUrl}`,
