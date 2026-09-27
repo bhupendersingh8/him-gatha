@@ -126,7 +126,7 @@ export default function Footer() {
             <span>Community Curated & Field Verified</span>
           </span>
           <span>•</span>
-          <span>100% Offline-Resilient</span>
+          <span>Works Offline</span>
         </div>
       </div>
     </footer>

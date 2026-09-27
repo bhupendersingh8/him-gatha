@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, ArrowRight } from 'lucide-react';
+import { MapPin, ArrowRight, Landmark } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useTranslation } from '../context/LanguageContext';
 
@@ -29,6 +29,10 @@ export default function DeityCard({ deity }) {
 
   const imgSrc = deity.imageUrl || (deity.images && deity.images.length > 0 ? deity.images[0] : null);
 
+  const fullLocation = deity.village 
+    ? `${deity.village}, ${displayDistrict}` 
+    : (deity.region ? `${deity.region}, ${displayDistrict}` : displayDistrict);
+
   return (
     <Link 
       to={`/deity/${deity.slug || deity.id}`}
@@ -56,14 +60,15 @@ export default function DeityCard({ deity }) {
               onError={() => setImgError(true)}
             />
           ) : (
-            <div className="absolute inset-0 bg-gradient-to-br from-[var(--bg-secondary)] via-[var(--bg-primary)] to-[var(--bg-card)] flex flex-col items-center justify-center p-4">
-              <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#8E2800_1px,transparent_1px)] [background-size:16px_16px]" />
-              <div className="w-16 h-16 rounded-full border border-[var(--accent-gold)]/40 flex items-center justify-center bg-[var(--accent-color)]/5 shadow-inner mb-2 group-hover:scale-110 group-hover:border-[var(--accent-gold)] transition-all duration-500">
-                <span className="text-[var(--accent-color)] font-serif italic text-3xl font-bold tracking-widest drop-shadow-sm">
+            <div className="absolute inset-0 bg-gradient-to-br from-stone-900 via-[var(--bg-secondary)] to-stone-950 flex flex-col items-center justify-center p-4">
+              <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:16px_16px]" />
+              <div className="w-16 h-16 rounded-2xl border border-[var(--accent-gold)]/40 flex flex-col items-center justify-center bg-[var(--accent-gold)]/10 shadow-inner mb-2 group-hover:scale-105 group-hover:border-[var(--accent-gold)] transition-all duration-300 relative">
+                <Landmark className="w-7 h-7 text-[var(--accent-gold)] mb-0.5" />
+                <span className="text-[11px] font-serif text-[var(--accent-gold)] font-bold">
                   {deity.name?.charAt(0) || 'ॐ'}
                 </span>
               </div>
-              <span className="text-[10px] text-[var(--accent-gold)] font-mono font-bold uppercase tracking-widest z-10">
+              <span className="text-xs text-[var(--accent-gold)] font-mono font-bold uppercase tracking-wider z-10">
                 {displayDistrict} • देव स्थान
               </span>
             </div>
@@ -71,18 +76,18 @@ export default function DeityCard({ deity }) {
 
           {/* District & Architecture Floating Badges */}
           <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 flex-wrap">
-            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase font-bold tracking-wider bg-black/75 backdrop-blur-md text-white border border-white/20 shadow-sm">
+            <span className="px-2.5 py-0.5 rounded-full text-xs font-mono uppercase font-bold tracking-wider bg-black/75 backdrop-blur-md text-white border border-white/20 shadow-sm">
               {displayDistrict}
             </span>
             {architectureStyle && (
-              <span className="px-2 py-0.5 rounded-full text-[9px] font-mono font-semibold uppercase tracking-wider bg-amber-950/80 backdrop-blur-md text-amber-300 border border-amber-400/30 shadow-sm hidden sm:inline-block">
+              <span className="px-2 py-0.5 rounded-full text-xs font-mono font-semibold uppercase tracking-wider bg-amber-950/80 backdrop-blur-md text-amber-300 border border-amber-400/30 shadow-sm hidden sm:inline-block">
                 {architectureStyle}
               </span>
             )}
           </div>
 
           <div className="absolute top-3 right-3 z-10">
-            <span className="px-2 py-0.5 rounded text-[9px] font-mono uppercase tracking-wider bg-black/60 backdrop-blur-md text-stone-300 border border-white/10 font-bold">
+            <span className="px-2 py-0.5 rounded-md text-xs font-mono uppercase tracking-wider bg-black/60 backdrop-blur-md text-stone-300 border border-white/10 font-bold">
               #{deity.id}
             </span>
           </div>
@@ -105,15 +110,18 @@ export default function DeityCard({ deity }) {
             </p>
           </div>
           
-          <div className="mt-5 pt-4 border-t border-[var(--border-color)] flex items-center justify-between">
-            <div className="flex items-center text-xs text-[var(--text-muted)] gap-1.5 font-medium truncate max-w-[65%]">
-              <MapPin className="w-3.5 h-3.5 text-[var(--accent-color)] shrink-0" />
-              <span className="truncate">{deity.village || deity.region || displayDistrict}</span>
+          <div className="mt-5 pt-4 border-t border-[var(--border-color)] flex items-center justify-between gap-2">
+            <div 
+              className="flex items-center text-xs text-[var(--text-muted)] gap-1.5 font-medium min-w-0 flex-1"
+              title={fullLocation}
+            >
+              <MapPin className="w-3.5 h-3.5 text-[var(--accent-color)] shrink-0" aria-hidden="true" />
+              <span className="truncate">{fullLocation}</span>
             </div>
             
-            <span className="inline-flex items-center gap-1.5 text-xs text-[var(--accent-color)] font-label-caps uppercase tracking-wider font-semibold group-hover:translate-x-0.5 transition-transform shrink-0">
+            <span className="inline-flex items-center gap-1.5 text-xs text-[var(--accent-color)] uppercase tracking-wider font-semibold group-hover:translate-x-0.5 transition-transform shrink-0">
               <span>{t('view_lore') || 'Explore'}</span>
-              <ArrowRight className="w-3 h-3 text-[var(--accent-gold)]" />
+              <ArrowRight className="w-3 h-3 text-[var(--accent-gold)]" aria-hidden="true" />
             </span>
           </div>
         </div>

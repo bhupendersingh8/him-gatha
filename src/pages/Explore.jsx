@@ -24,7 +24,7 @@ const TRADITIONS = [
 ];
 
 const ARCHITECTURES = [
-  { id: 'All', label: 'All Architectural Styles', label_hi: 'सभी शैलियाँ' },
+  { id: 'All', label: 'All Styles', label_hi: 'सभी शैलियाँ' },
   { id: 'Kath-Kuni', label: 'Kath-Kuni (Interlocking Timber)', label_hi: 'काठ-कुणी' },
   { id: 'Pagoda', label: 'Tiered Pagoda', label_hi: 'पैगोडा' },
   { id: 'Pent-roof', label: 'Pent-Roof / Gabled', label_hi: 'ढलवां छत' },
@@ -83,9 +83,9 @@ export default function Explore() {
       <div className="max-w-7xl mx-auto">
         {/* Header Title Section */}
         <div className="mb-12 text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[var(--accent-gold)]/10 border border-[var(--accent-gold)]/30 text-[var(--accent-gold)] text-[11px] font-bold uppercase tracking-widest mb-3 font-mono shadow-sm">
-            <Compass className="w-3.5 h-3.5 text-[var(--accent-gold)]" />
-            <span>Living Spatial Archive • Multi-Faceted Index</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[var(--accent-gold)]/10 border border-[var(--accent-gold)]/30 text-[var(--accent-gold)] text-xs font-semibold tracking-wider mb-3 font-mono shadow-sm">
+            <Compass className="w-3.5 h-3.5 text-[var(--accent-gold)]" aria-hidden="true" />
+            <span>Living Spatial Archive • Comprehensive Database</span>
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-[var(--text-primary)] mb-4 tracking-tight">
             {t('himachal_atlas')} &amp; {t('deity_archive')}
@@ -96,19 +96,19 @@ export default function Explore() {
         </div>
 
         {/* Faceted Filter Toolbar */}
-        <div className="bg-[var(--bg-card)] border border-[var(--border-gold-subtle)] rounded-3xl p-6 md:p-8 shadow-luxury mb-12">
+        <div className="bg-[var(--bg-card)] border border-[var(--border-gold-subtle)] rounded-2xl p-6 md:p-8 shadow-luxury mb-12">
           <div className="flex flex-col gap-6">
             
             {/* Top Bar: Search Input & Action Controls */}
             <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
               <div className="relative w-full md:flex-1">
-                <Search className="absolute left-4 top-3.5 w-4 h-4 text-[var(--accent-gold)]" />
+                <Search className="absolute left-4 top-3.5 w-4 h-4 text-[var(--accent-gold)]" aria-hidden="true" />
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search by deity name, village, oral lore, or lineage..."
-                  className="w-full pl-11 pr-4 py-3 rounded-2xl bg-[var(--bg-primary)] border border-[var(--border-color)] text-[var(--text-primary)] placeholder-[var(--text-muted)] text-sm focus:border-[var(--accent-gold)] focus:outline-none transition-all shadow-inner"
+                  className="w-full pl-11 pr-4 py-3 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-color)] text-[var(--text-primary)] placeholder-[var(--text-muted)] text-sm focus:border-[var(--accent-gold)] focus:outline-none transition-all shadow-inner"
                 />
                 {searchQuery && (
                   <button
@@ -149,18 +149,18 @@ export default function Explore() {
             </div>
 
             {/* Filter Selectors: Tradition & Architecture */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-[var(--border-color)]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 border-t border-[var(--border-color)]">
               <div>
-                <label className="text-[11px] font-mono text-[var(--text-muted)] uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                  <Layers className="w-3.5 h-3.5 text-[var(--accent-color)]" />
+                <label className="text-xs font-semibold text-[var(--text-secondary)] mb-2.5 flex items-center gap-1.5">
+                  <Layers className="w-3.5 h-3.5 text-[var(--accent-color)]" aria-hidden="true" />
                   <span>Sacred Tradition</span>
                 </label>
-                <div className="flex flex-wrap gap-1.5">
+                <div className="flex flex-wrap gap-2">
                   {TRADITIONS.map(trad => (
                     <button
                       key={trad.id}
                       onClick={() => setSelectedTradition(trad.id)}
-                      className={`px-3 py-1.5 rounded-lg text-xs transition-all border ${
+                      className={`px-3.5 py-1.5 rounded-xl text-xs transition-all border ${
                         selectedTradition === trad.id
                           ? 'bg-[var(--accent-color)] text-white border-[var(--accent-color)] font-semibold shadow-sm'
                           : 'bg-[var(--bg-primary)] text-[var(--text-secondary)] border-[var(--border-color)] hover:border-[var(--accent-color)]/50'
@@ -173,18 +173,18 @@ export default function Explore() {
               </div>
 
               <div>
-                <label className="text-[11px] font-mono text-[var(--text-muted)] uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                  <Landmark className="w-3.5 h-3.5 text-[var(--accent-gold)]" />
+                <label className="text-xs font-semibold text-[var(--text-secondary)] mb-2.5 flex items-center gap-1.5">
+                  <Landmark className="w-3.5 h-3.5 text-[var(--accent-gold)]" aria-hidden="true" />
                   <span>Temple Architecture</span>
                 </label>
-                <div className="flex flex-wrap gap-1.5">
+                <div className="flex flex-wrap gap-2">
                   {ARCHITECTURES.map(arch => (
                     <button
                       key={arch.id}
                       onClick={() => setSelectedArchitecture(arch.id)}
-                      className={`px-3 py-1.5 rounded-lg text-xs transition-all border ${
+                      className={`px-3.5 py-1.5 rounded-xl text-xs transition-all border ${
                         selectedArchitecture === arch.id
-                          ? 'bg-[var(--accent-gold)] text-white border-[var(--accent-gold)] font-semibold shadow-sm'
+                          ? 'bg-[var(--accent-gold)] text-stone-900 border-[var(--accent-gold)] font-bold shadow-sm'
                           : 'bg-[var(--bg-primary)] text-[var(--text-secondary)] border-[var(--border-color)] hover:border-[var(--accent-gold)]/50'
                       }`}
                     >
@@ -197,29 +197,34 @@ export default function Explore() {
 
             {/* District Horizontal Filter Pills */}
             <div className="pt-4 border-t border-[var(--border-color)]">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-[11px] font-mono text-[var(--text-muted)] uppercase tracking-wider flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-[var(--accent-color)]" />
-                  <span>12 Districts of Himachal</span>
-                </span>
-                <span className="text-xs text-[var(--text-muted)] font-serif">
-                  Selected: <strong className="text-[var(--text-primary)]">{selectedDistrict}</strong>
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5 text-[var(--accent-color)]" aria-hidden="true" />
+                  <span className="text-xs font-semibold text-[var(--text-secondary)]">
+                    12 Districts of Himachal
+                  </span>
+                </div>
+                <span className="text-xs px-2.5 py-0.5 rounded-full bg-[var(--accent-color)]/10 text-[var(--accent-color)] border border-[var(--accent-color)]/30 font-medium">
+                  Active: <strong className="font-bold">{selectedDistrict === 'All' ? 'All Districts' : selectedDistrict}</strong>
                 </span>
               </div>
-              <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-thin">
-                {districts.map(dist => (
-                  <button
-                    key={dist}
-                    onClick={() => setSelectedDistrict(dist)}
-                    className={`px-3.5 py-1.5 rounded-full text-xs whitespace-nowrap transition-all border shrink-0 ${
-                      selectedDistrict === dist
-                        ? 'bg-[var(--accent-color)] text-white border-[var(--accent-color)] font-semibold shadow-sm'
-                        : 'bg-[var(--bg-primary)] text-[var(--text-secondary)] border-[var(--border-color)] hover:bg-[var(--bg-secondary)]'
-                    }`}
-                  >
-                    {dist === 'All' ? 'All Districts' : dist}
-                  </button>
-                ))}
+              <div className="relative">
+                <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-thin scroll-smooth pr-10">
+                  {districts.map(dist => (
+                    <button
+                      key={dist}
+                      onClick={() => setSelectedDistrict(dist)}
+                      className={`px-3.5 py-1.5 rounded-full text-xs whitespace-nowrap transition-all border shrink-0 ${
+                        selectedDistrict === dist
+                          ? 'bg-[var(--accent-color)] text-white border-[var(--accent-color)] font-semibold shadow-sm'
+                          : 'bg-[var(--bg-primary)] text-[var(--text-secondary)] border-[var(--border-color)] hover:border-[var(--accent-gold)]/60'
+                      }`}
+                    >
+                      {dist === 'All' ? 'All Districts' : dist}
+                    </button>
+                  ))}
+                </div>
+                <div className="pointer-events-none absolute right-0 top-0 bottom-2 w-10 bg-gradient-to-l from-[var(--bg-card)] to-transparent" aria-hidden="true" />
               </div>
             </div>
 
@@ -228,19 +233,18 @@ export default function Explore() {
 
         {/* Collapsible Vector Topography Atlas Map */}
         {showMap && (
-          <div className="mb-12 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-3xl p-6 md:p-8 shadow-sm">
-            <div className="flex items-center justify-between mb-6">
-              <div>
-                <span className="text-xs uppercase tracking-widest text-[var(--accent-color)] font-mono block mb-1">
-                  Interactive Vector Topography
-                </span>
-                <h2 className="text-xl md:text-2xl font-serif font-bold text-[var(--text-primary)]">
-                  Cartographic District Explorer
-                </h2>
-              </div>
-              <span className="text-xs text-[var(--text-muted)] hidden sm:block">
-                Click any district to zoom into sacred tehsils and shrine coordinates
+          <div className="mb-12 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-6 md:p-8 shadow-sm">
+            <div className="mb-6">
+              <span className="text-xs uppercase tracking-widest text-[var(--accent-color)] font-mono block mb-1">
+                Interactive District Map
               </span>
+              <h2 className="text-xl md:text-2xl font-serif font-bold text-[var(--text-primary)] mb-1.5">
+                Cartographic District Explorer
+              </h2>
+              <p className="text-xs sm:text-sm text-[var(--text-muted)] flex items-center gap-1.5">
+                <MapPin className="w-3.5 h-3.5 text-[var(--accent-color)] shrink-0" aria-hidden="true" />
+                <span>Click or tap any district on the map to filter shrines by district coordinates</span>
+              </p>
             </div>
 
             <HimachalSVGMap 
@@ -258,6 +262,8 @@ export default function Explore() {
             onDistrictSelect={setSelectedDistrict}
             selectedCategory={selectedTradition}
             selectedArchitecture={selectedArchitecture}
+            hideSearch={true}
+            hideDistrictFilter={true}
           />
         </div>
       </div>
